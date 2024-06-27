@@ -51,9 +51,12 @@ const { title } = Astro.props;
   </head>
 
   <body class="antialiased bg-white dark:bg-slate-900">
-    <Navbar />
-    <slot />
-    <Footer />
+    <div class="flex flex-col min-h-screen justify-between">
+      <Navbar />
+      <main class="mb-auto"><slot /></main>
+      <Footer />
+    </div>
+
     <style is:global>
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
