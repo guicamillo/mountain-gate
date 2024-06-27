@@ -6,9 +6,10 @@ type Glob = {
 
 const YMD_REGEXP = /(\d{4})\-(\d{2})\-(\d{2})/;
 
-const isSMM = (s: string) => s.startsWith("/SMM/");
-const isAGM = (s: string) => s.startsWith("/AGM/");
-const isFinancialStatement = (s: string) => s.startsWith("/FINANCIAL_STATEMENTS/");
+const isSMM = (s: string) => s.startsWith("/SMM");
+const isAGM = (s: string) => s.startsWith("/AGM");
+const isFinancialStatement = (s: string) =>
+  s.startsWith("/FINANCIAL_STATEMENTS") || s.startsWith("/Financial-Statement-Year-End");
 
 function removePublicFolder(s: string) {
   return s.replace("/public", "").replace("/mountain-gate", "").replace("/_astro", "");
