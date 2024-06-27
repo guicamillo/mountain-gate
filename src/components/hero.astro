@@ -1,10 +1,18 @@
 ---
-import { Image } from "astro:assets";
 // import heroImage from "assets/hero.svg";
 import Container from "@components/container.astro";
 ---
 
-<div class="lg:h-[calc(100vh-300px)] h-fit lg:bg-[url(/hero.jpg)] bg-[url(/hero-mobile.jpg)] bg-cover bg-right-bottom">
+<div
+  class:list={[
+    "lg:h-[calc(100vh-300px)]",
+    "h-fit",
+    "lg:bg-[url(/hero.webp)]",
+    "bg-[url(/hero-mobile.webp)]",
+    "bg-cover",
+    "bg-right-bottom",
+  ]}
+>
   <div class="bg-center flex lg:h-[calc(100vh-300px)] h-fit bg-opacity-70 bg-slate-800 py-16 lg:py-0">
     <Container class="grid lg:grid-cols-2 place-items-center">
       <div></div>
