@@ -1,0 +1,97 @@
+---
+import Container from "@components/container.astro";
+import Layout from "@layouts/Layout.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import { Icon } from "astro-icon/components";
+import Card from "@components/card.astro";
+
+const rules = [
+  {
+    title: "Parking",
+    description:
+      "Only one full-time resident vehicle can be parked in common area parking spots.  Visitors <b>must</b> park off-site or in the resident’s carport they are visiting.",
+    icon: "bx:bxs-car",
+  },
+  {
+    title: "Drive with caution!",
+    description:
+      "There are children playing in our complex.  Do not exceed 15 km/h when driving on Braemoor, Moorside and Ridgemoor Place.",
+    icon: "bx:bxs-error",
+  },
+  {
+    title: "Carport care",
+    description:
+      "A tidy carport can deter theft and break-ins.  Our Strata Rules and Bylaws state that carports must be kept neat and free of stored items, except for garbage containers, a recycle box, large recreational equipment, a garden hose, and neatly stacked firewood.",
+    icon: "bx:bxs-trash-alt",
+  },
+  {
+    title: "Common courtesy",
+    description:
+      "Common areas, sidewalks and roadways are for everyone's use.  Many residents and others who live in the neighbourhood walk through our complex.  Be mindful and remove items that may have accidentally been overlooked or not put away.",
+    icon: "bx:bxs-wink-smile",
+  },
+  {
+    title: "Renovations",
+    description:
+      "You must submit a written request to council and receive a written approval prior to commencing any renovation that alters the exterior structure or appearance or changes the interior structure.  Please use the Permission to alter building envelope form for exterior changes.  Please send an email with as much detailed information as possible.  Improvements or upgrades to unit interiors must adhere to local building codes, permits and inspection processes where applicable.  Improvements such as interior flooring, trim and other such cosmetic improvements do not require council permission except where previously stated.  Please consult the strata insurance policy, the Strata Property Act and your own insurance policy to determine coverage responsibilities of renovations and improvements.  The Strata reserves the right to remove or repair, at owner’s cost, any improvement or renovation that did not get prior written permission or did not get or does not meet building standards code.  It’s always better to ask permission in any project.  Read this article for a helpful starting point",
+    icon: "bx:bxs-home-smile",
+  },
+];
+
+const download_links = [
+  {
+    name: "STRATA NW2040 ",
+    price: "Bylaws",
+    popular: true,
+    features: [],
+    button: {
+      text: "Download",
+      link: "/",
+    },
+  },
+  {
+    name: "STRATA NW2040 ",
+    price: "Rules",
+    popular: true,
+    features: [],
+    button: {
+      text: "Download",
+      link: "#",
+    },
+  },
+];
+---
+
+<Layout title="">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Strata Bylaws & Rules</Fragment>
+      <Fragment slot="desc">Effective November 1, 2017 </Fragment>
+    </Sectionhead>
+
+    <div class="grid md:grid-cols-2 gap-12 mx-auto max-w-screen-md mt-12">
+      {download_links.map((item) => <Card plan={item} />)}
+    </div>
+
+    <hr class="mt-16" />
+
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-10 mt-16">
+      {
+        rules.map((item) => (
+          <div class="flex gap-4 items-start">
+            <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
+              <Icon class="text-white" name={item.icon} />
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg">{item.title}</h3>
+              <p
+                class="text-slate-500 mt-2 leading-relaxed"
+                set:html={item.description}
+              />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</Layout>

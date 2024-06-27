@@ -1,0 +1,123 @@
+---
+import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+
+type RoleResponsibility = {
+  name: string;
+  blurb: string;
+  responsibilities?: string[];
+};
+
+const roles: RoleResponsibility[] = [
+  {
+    name: "President",
+    blurb:
+      "The president is responsible for overall leadership on the Strata Council and for overseeing the portfolios of each other Council member. The president's duties include:",
+    responsibilities: [
+      "Ensuring the Council maintains its fiduciary duty to Strata owners",
+      "Being the key contact for Strata owners and agencies external to the Strata such as the Strata's insurance company, the Condominium Home Owners Association (CHOA) and the Strata's bank.",
+      "Communicating to owners about issues that may affect the Strata as a whole",
+      "Administering Strata bylaws and rules",
+      "Maintaining insurance on the common property",
+      "Preparing AGM or special AGM documentation, which includes helping prepare the budget in consultation with the treasurer and writing the AGM agenda",
+      "Chairing Strata council meetings and the AGM",
+      "Overseeing the administration of the Strata's finances in conjunction with the treasurer",
+      "Obtaining signing authority for Strata issued cheques",
+      "Being familiar with the Strata Property Act and its implementation.",
+    ],
+  },
+
+  {
+    name: "Treasurer",
+    blurb:
+      "The treasurer is primarily responsible for managing the strata corporation's finances and communicating with the accounting firm which manages the bookkeeping duties. The treasurer's duties include:",
+    responsibilities: [
+      "Collecting monthly maintenance fee cheques from all 36 strata owners at the start of the fiscal year.",
+      "Depositing the monthly strata fees in addition to other fees collected (Form F, Form B, NSF Cheques)",
+      "Providing the accounting firm with monthly summaries of deposits and bill payments.",
+      "Writing cheques for accounts payable billed to the strata corporation.",
+      "Maintaining bill payment records and all documents prepared by the accounting firm.",
+      "Completing and issuing Form Fs and Form Bs upon request of owners.",
+      "Presenting the monthly financial statements prepared by the accounting firm at strata council meetings.",
+      "Presenting the yearend financial report at the Annual General Meeting.",
+      "In addition to these duties, new treasurers are required to obtain signing authority at the bank in order to deposit maintenance fees and write bill payment cheques.",
+    ],
+  },
+
+  {
+    name: "Maintenance Liaison",
+    blurb:
+      "The maintenance liaison is primarily responsible for overseeing the Strata corporation's building maintenance and communicating with council and owners about maintenance matters and strategies. The maintenance liaison's duties include:",
+    responsibilities: [
+      "Conducting regular physical inspections of buildings and assets.",
+      "Responding to emergency requests from owners regarding strata related events.",
+      "Ensure that maintenance and repair work is completed, inspected and documented.",
+      "Gather, update and secure maintenance documents.",
+      "Communicate regularly with owners about maintenance and repairs directly or through council.",
+      "Develop a maintenance plan.",
+      "In collaboration with council assign responsibility for maintenance and repair. Have clearly defined roles and responsibilities for maintenance, repairs and renewal work. The work will need to be assigned, coordinated, monitored, documented and evaluated.",
+      "Communicate to owners who is responsible for the repair and maintenance of limited common property (for example, annual maintenance of balconies) and items in strata lots (for example, hot water tanks) and ensure that this work is done.",
+    ],
+  },
+
+  {
+    name: "Landscaping Liaison",
+    blurb:
+      "The landscaping liaison is primarily responsible for overseeing the Strata's grounds, including all common area gardens, trees and plants. The landscaping liaison's duties include:",
+    responsibilities: [
+      "Identifying and vetting a landscaping company to perform maintenance of the Strata's grounds. Often this isn't required, as the company from the previous year has been retained.",
+      "Overseeing the annual contract between the Strata and its designated landscaping company, including periodic inspections of the contracted landscaper's work",
+      "Relaying owner and Strata concerns about the grounds to the contracted landscaping company when appropriate",
+      "Conducting a yearly inspection of the Strata's trees with a qualified arborist and arranging pruning or removal where appropriate",
+      "Arranging the planting of annuals in each of the Strata's 3 planter boxes, which are presently located in front of Moorside, Braemoor and Ridgemoor",
+      "Ensuring owner's use of Strata grounds for planting and plant maintenance are in accordance with the Strata Bylaws and Rules.",
+      "Ensuring Strata trees do not encroach on City of Burnaby property. Trees on Strata property, for example, shouldn't block street lamps.",
+      "Liaising with neighbouring Strata's to ensure that problematic trees bordering our property lines are appropriately dealt with.",
+    ],
+  },
+
+  {
+    name: "Member At Large",
+    blurb:
+      "The Member at Large is responsible for helping other council members with miscellaneous duties and tasks that require assistance. The Member at Large is not required to attend all meetings.",
+  },
+];
+---
+
+<Layout title="About">
+  <Sectionhead>
+    <Fragment slot="title">Roles and Responsibilities</Fragment>
+    <Fragment slot="desc"
+      >What does the Mountain Gate Strata council do?
+    </Fragment>
+  </Sectionhead>
+
+  <Container>
+    <div class="mx-auto prose prose-lg mt-6">
+      {
+        roles.map((role, index) => {
+          const hasMore = index + 1 < roles.length;
+          return (
+            <>
+              <div class="mt-8">
+                <h3 class="font-semibold text-lg">{role.name}</h3>
+                <p class="text-sm font-medium">{role.blurb}</p>
+                {role.responsibilities && (
+                  <ul class="text-sm font-thin">
+                    {role.responsibilities.map((responsibility) => {
+                      return <li>{responsibility}</li>;
+                    })}
+                  </ul>
+                )}
+              </div>
+              {hasMore && <hr />}
+            </>
+          );
+        })
+      }
+    </div>
+  </Container>
+</Layout>
