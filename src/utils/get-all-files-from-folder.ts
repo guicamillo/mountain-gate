@@ -10,7 +10,9 @@ const isSMM = (s: string) => s.startsWith("/SMM/");
 const isAGM = (s: string) => s.startsWith("/AGM/");
 const isFinancialStatement = (s: string) => s.startsWith("/FINANCIAL_STATEMENTS/");
 
-const removePublicFolder = (s: string) => s.replace("/public", "");
+function removePublicFolder(s: string) {
+  return s.replace("/public", "").replace("/mountain-gate", "").replace("/_astro", "");
+}
 
 const MONTHS = (() => {
   const format = new Intl.DateTimeFormat("en-US", { month: "long" }).format;
