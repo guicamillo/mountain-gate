@@ -4,12 +4,19 @@ import Layout from "@layouts/Layout.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import LinkList from "@components/link-list.astro";
 import Section from "@components/section.astro";
+import {
+  groupStrataMeetingMinutesPerYear,
+  convertGlobToLinkList,
+  toHumanReadableFormat,
+} from "@utils/get-all-files-from-folder";
 
-const meetings = await Astro.glob("../../public/meeting-minutes/**/*.pdf");
+const SMM = groupStrataMeetingMinutesPerYear(await Astro.glob("../../public/SMM/*.pdf"));
+const AGM = convertGlobToLinkList(await Astro.glob("../../public/AGM/*.pdf"));
+const DR = convertGlobToLinkList(await Astro.glob("../../public/DEPRECIATION_REPORTS/*.pdf"));
+const FINANCIAL_STATEMENT_LINKS = convertGlobToLinkList(await Astro.glob("../../public/FINANCIAL_STATEMENTS/*.pdf"));
 ---
 
 <Layout title="">
-  <pre>{JSON.stringify(meetings, null, 2)}</pre>
   <Container>
     <Sectionhead>
       <Fragment slot="title">Meetings</Fragment>
@@ -21,35 +28,25 @@ const meetings = await Astro.glob("../../public/meeting-minutes/**/*.pdf");
           name="Strata Meeting Minutes"
           blurb="Strata meetings are held approximately every 4 to 6 weeks. Minutes will be posted here and distributed to owners within 10 business days from the previous meeting."
         >
-          <Section as="h4" name="2024">
-            <LinkList
-              links={[
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-                { text: "a", href: "" },
-              ]}
-              external
-            />
-          </Section>
+          {
+            Object.entries(SMM)
+              .reverse()
+              .map(([year, entries]) => {
+                return (
+                  <div class="ps-8 pt-4">
+                    <Section as="h4" name={year}>
+                      <LinkList
+                        links={(entries as string[]).map((href) => ({
+                          text: toHumanReadableFormat(href),
+                          href,
+                        }))}
+                        external
+                      />
+                    </Section>
+                  </div>
+                );
+              })
+          }
         </Section>
       </div>
       <div class="flex gap-12 flex-col">
@@ -57,62 +54,11 @@ const meetings = await Astro.glob("../../public/meeting-minutes/**/*.pdf");
           name="AGM Meeting Minutes"
           blurb="AGM Meetings are scheduled no sooner than October 15 and no later than November 15 of the operational year"
         >
-          <LinkList
-            links={[
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-            ]}
-            external
-          />
+          <LinkList links={AGM} external />
         </Section>
+
         <Section name="Financial Statements" blurb="Financial years operate September 1 through August 31">
-          <LinkList
-            links={[
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-              { text: "a", href: "" },
-            ]}
-            external
-          />
+          <LinkList links={FINANCIAL_STATEMENT_LINKS} external />
         </Section>
       </div>
     </div>
