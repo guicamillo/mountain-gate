@@ -1,29 +1,29 @@
 ---
 import Container from "@components/container.astro";
-import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import heroImage from "assets/logo.svg";
+import { Astronav, MenuIcon, MenuItems } from "astro-navbar";
 import { Image } from "astro:assets";
 
 const menuitems = [
   {
     title: "Bylaws & Rules",
-    path: "/bylaws-and-rules",
+    path: `${import.meta.env.BASE_URL}/bylaws-and-rules`,
   },
   {
     title: "Roles and Responsibilities",
-    path: "/roles-and-responsibilities",
+    path: `${import.meta.env.BASE_URL}/roles-and-responsibilities`,
   },
   {
     title: "Meetings",
-    path: "/meetings",
+    path: `${import.meta.env.BASE_URL}/meetings`,
   },
   {
     title: "Forms, Links & Reports",
-    path: "/forms-links-reports",
+    path: `${import.meta.env.BASE_URL}/forms-links-reports`,
   },
   {
     title: "Contact",
-    path: "/contact",
+    path: `${import.meta.env.BASE_URL}/contact`,
   },
 ];
 ---
@@ -35,7 +35,7 @@ const menuitems = [
     <header class="z-40 sticky py-5 top-0 flex flex-col lg:flex-row justify-between items-center">
       <Astronav>
         <div class="flex w-full lg:w-auto items-center justify-between">
-          <a href="/" class="text-lg tracking-tighter">
+          <a href={`${import.meta.env.BASE_URL}/`} class="text-lg tracking-tighter">
             <div class="flex flex-row gap-1 items-center">
               <Image src={heroImage} alt="" width="50" loading="eager" format="svg" />
               <div class="flex flex-col gap-px-1">
