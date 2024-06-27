@@ -1,0 +1,113 @@
+---
+import Container from "@components/container.astro";
+import Layout from "@layouts/Layout.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import LinkList from "@components/link-list.astro";
+import Section from "@components/section.astro";
+---
+
+<Layout title="">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Forms & Reports</Fragment>
+    </Sectionhead>
+
+    <div class="flex gap-8 mt-16 flex-col">
+      <div class="flex gap-2 flex-col">
+        <p>
+          Mountaingate (Strata NW2040) now processes maintenance fees via automatic withdrawal and is now a mandatory
+          requirement for all owners.
+        </p>
+        <p>
+          <b>Realtors and sellers:</b> Form F and Form B requests are charged at the rate found in the Strata Rules per unit
+          per instance payable upon receipt. Please allow up to 7 business days to process Form F and Form B requests. Less
+          than 7 days may incur additional charges.
+        </p>
+        <p>NSF cheques and Bylaw infractions are subject to penalties and/or fines set out in the Bylaws and Rules.</p>
+      </div>
+      <hr />
+      <Section
+        name="Digital information policy"
+        blurb={`The strata council will <b>never</b> request any personally identifying
+        information to be emailed. Forms for automated maintenance fee
+        withdrawal and owner information will only be collected by physical
+        printouts during the annual AGM or when a new owner declares occupancy.`}
+      />
+      <hr />
+      <Section
+        name="Forms"
+        blurb={`Forms are subject to change and the latest version is available online
+        at this site. Please contact the Strata Council if you have any
+        questions.`}
+        ><LinkList
+          external
+          links={[
+            { href: "", text: "Form B" },
+            { href: "", text: "Form F - Certificate of Payment" },
+            { href: "", text: "Form K" },
+            { href: "", text: "Permission to alter building envelope" },
+            { href: "", text: "Proxy Authorization" },
+            { href: "", text: "Strata Email Consent Form" },
+            {
+              href: "",
+              text: "Strata Maintenance Fee Pre-Authorized Payment (PAD)",
+            },
+          ]}
+        />
+      </Section>
+
+      <hr />
+      <Section name="Depreciation reports">
+        <LinkList
+          external
+          links={[
+            {
+              href: "",
+              text: "Depreciation Report (July 1, 2014)",
+            },
+            {
+              href: "",
+              text: "Depreciation Report (July 20, 2021)",
+            },
+          ]}
+        />
+      </Section>
+      <hr />
+      <Section name="Information links">
+        <LinkList
+          external
+          links={[
+            {
+              href: "https://spca.bc.ca/locations/burnaby/",
+              text: "Burnaby SPCA (injured wildlife or dead animal removal)",
+            },
+            {
+              href: "https://www.burnaby.ca/services-and-payments/recycling-and-garbage",
+              text: "City of Burnaby Garbage & Recycling website",
+            },
+            {
+              href: "https://www.burnaby.ca/",
+              text: "City of Burnaby website",
+            },
+            {
+              href: "https://choa.bc.ca/",
+              text: "Condominium Home Owners Assocation of BC",
+            },
+            {
+              href: "https://www2.gov.bc.ca/gov/content/safety/emergency-management",
+              text: "Provincial Emergency Preparedness, Response & Recovery Program",
+            },
+            {
+              href: "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/98043_00",
+              text: "Strata Property Act",
+            },
+            {
+              href: "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/12_43_2000",
+              text: "Strata Property Regulation",
+            },
+          ]}
+        />
+      </Section>
+    </div>
+  </Container></Layout
+>

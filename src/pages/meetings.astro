@@ -1,0 +1,120 @@
+---
+import Container from "@components/container.astro";
+import Layout from "@layouts/Layout.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import LinkList from "@components/link-list.astro";
+import Section from "@components/section.astro";
+
+const meetings = await Astro.glob("../../public/meeting-minutes/**/*.pdf");
+---
+
+<Layout title="">
+  <pre>{JSON.stringify(meetings, null, 2)}</pre>
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Meetings</Fragment>
+    </Sectionhead>
+
+    <div class="grid md:grid-cols-2 gap-12 mt-12">
+      <div class="flex gap-2 flex-col">
+        <Section
+          name="Strata Meeting Minutes"
+          blurb="Strata meetings are held approximately every 4 to 6 weeks. Minutes will be posted here and distributed to owners within 10 business days from the previous meeting."
+        >
+          <Section as="h4" name="2024">
+            <LinkList
+              links={[
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+                { text: "a", href: "" },
+              ]}
+              external
+            />
+          </Section>
+        </Section>
+      </div>
+      <div class="flex gap-12 flex-col">
+        <Section
+          name="AGM Meeting Minutes"
+          blurb="AGM Meetings are scheduled no sooner than October 15 and no later than November 15 of the operational year"
+        >
+          <LinkList
+            links={[
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+            ]}
+            external
+          />
+        </Section>
+        <Section name="Financial Statements" blurb="Financial years operate September 1 through August 31">
+          <LinkList
+            links={[
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+              { text: "a", href: "" },
+            ]}
+            external
+          />
+        </Section>
+      </div>
+    </div>
+  </Container>
+</Layout>

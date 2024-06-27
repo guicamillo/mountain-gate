@@ -1,0 +1,16 @@
+---
+type Props = {
+  name: string;
+  blurb?: string;
+  as?: string;
+};
+
+const { name, blurb, as = "h3" } = Astro.props;
+const HeadingElement = as;
+---
+
+<section>
+  <HeadingElement class="font-semibold text-xl">{name}</HeadingElement>
+  {blurb && <p class="text-sm font-light" set:html={blurb} />}
+  <slot />
+</section>

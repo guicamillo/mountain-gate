@@ -75,19 +75,16 @@ const download_links = [
 
     <hr class="mt-16" />
 
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-10 mt-16">
+    <div class="grid sm:grid-cols-2 md:grid-cols-1 gap-10 mt-16">
       {
         rules.map((item) => (
-          <div class="flex gap-4 items-start">
+          <div class:list={["flex gap-4 items-start"]}>
             <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
-              <Icon class="text-white" name={item.icon} />
+              <Icon class="text-white" name={item.icon as any} />
             </div>
             <div>
               <h3 class="font-semibold text-lg">{item.title}</h3>
-              <p
-                class="text-slate-500 mt-2 leading-relaxed"
-                set:html={item.description}
-              />
+              <p class="text-slate-500 mt-2 leading-relaxed" set:html={item.description} />
             </div>
           </div>
         ))

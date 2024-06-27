@@ -1,0 +1,38 @@
+---
+type LinkDetails = {
+  href: string;
+  external?: boolean;
+  text: string;
+};
+
+type Props = {
+  external?: boolean;
+  links: LinkDetails[];
+};
+
+const { links, external = false } = Astro.props;
+---
+
+{
+  links && (
+    <div class="prose prose-sm">
+      <ul class="text-sm font-thin">
+        {links.map(({ href, external: externalOverride = external, text }) => {
+          return (
+            <li class="">
+              <a
+                href={href}
+                target={externalOverride ? "_blank" : ""}
+                title={externalOverride ? "Opens in a new tab" : ""}
+                rel="noopener noreferrer"
+                class="font-thin hover:decoration-2 hover:underline-offset-2 transition-all duration-150 ease-in-out"
+              >
+                {text}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  )
+}
