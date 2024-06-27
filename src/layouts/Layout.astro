@@ -12,7 +12,7 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
-const resolvedImageWithDomain = new URL("/opengraph.jpg", Astro.site).toString();
+const resolvedImageWithDomain = new URL("/hero.jpg", Astro.site).toString();
 
 const { title } = Astro.props;
 ---
@@ -32,19 +32,19 @@ const { title } = Astro.props;
       description=""
       canonical={canonicalURL}
       twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
+        creator: "@gui__camillo",
+        site: "",
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
-          image: resolvedImageWithDomain,
+          title: `MountainGate | Strata NW2040`,
+          image: http,
         },
         image: {
-          alt: "Astroship Homepage Screenshot",
+          alt: "MountainGate | Strata NW2040",
         },
       }}
     />
