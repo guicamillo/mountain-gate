@@ -1,5 +1,5 @@
 ---
-import Link from "@components/ui/link.astro";
+import Link from "@components/link.astro";
 const { plan } = Astro.props;
 ---
 
@@ -15,11 +15,7 @@ const { plan } = Astro.props;
       </p>
     </div>
     <div class="flex mt-8">
-      <Link
-        href={plan.button.link || "#"}
-        block
-        style={plan.popular ? "primary" : "outline"}
-      >
+      <Link href={plan.button.link || "#"} block style={plan.popular ? "primary" : "outline"}>
         {plan.button.text || "Get Started"}
       </Link>
     </div>
