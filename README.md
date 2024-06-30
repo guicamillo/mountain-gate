@@ -3,7 +3,7 @@ This repo holds the code to https://mountaingate.ca
 
 
 ## Development
-### Running the project:
+### Running the project
 
 ```bash
 npm install
