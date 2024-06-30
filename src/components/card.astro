@@ -14,7 +14,7 @@ const { plan } = Astro.props;
         {plan.price}
       </p>
     </div>
-    <div class="flex mt-8">
+    <div class="flex mt-6">
       <Link href={plan.button.link || "#"} block style={plan.popular ? "primary" : "outline"}>
         {plan.button.text || "Get Started"}
       </Link>
