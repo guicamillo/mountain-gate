@@ -18,6 +18,11 @@ const FINANCIAL_STATEMENT_LINKS = convertGlobToLinkList(
   await Astro.glob("../../public/FINANCIAL_STATEMENTS/*.pdf"),
   `${import.meta.env.BASE_URL}`,
 );
+
+const DEPRECIATION_REPORTS = convertGlobToLinkList(
+  await Astro.glob("../../public/DEPRECIATION_REPORTS/*.pdf"),
+  `${import.meta.env.BASE_URL}`,
+);
 ---
 
 <Layout title="">
@@ -63,6 +68,10 @@ const FINANCIAL_STATEMENT_LINKS = convertGlobToLinkList(
 
         <Section name="Financial Statements" blurb="Financial years operate September 1 through August 31">
           <LinkList links={FINANCIAL_STATEMENT_LINKS} external />
+        </Section>
+
+        <Section name="Depreciation reports">
+          <LinkList external links={DEPRECIATION_REPORTS} />
         </Section>
       </div>
     </div>

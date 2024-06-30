@@ -5,11 +5,6 @@ import Sectionhead from "@components/sectionhead.astro";
 import LinkList from "@components/link-list.astro";
 import Section from "@components/section.astro";
 import { convertGlobToLinkList } from "@utils/get-all-files-from-folder";
-
-const DEPRECIATION_REPORTS = convertGlobToLinkList(
-  await Astro.glob("../../public/DEPRECIATION_REPORTS/*.pdf"),
-  `${import.meta.env.BASE_URL}`,
-);
 ---
 
 <Layout title="">
@@ -36,18 +31,16 @@ const DEPRECIATION_REPORTS = convertGlobToLinkList(
 
       <Section
         name="Digital information policy"
-        blurb={`The strata council will <b>never</b> request any personally identifying
-        information to be emailed. Forms for automated maintenance fee
-        withdrawal and owner information will only be collected by physical
-        printouts during the annual AGM or when a new owner declares occupancy.`}
+        blurb="The strata council will <b>never</b> request any personally identifying information to be emailed. Forms for automated maintenance fee withdrawal and owner information will only be collected by physical printouts during the annual AGM or when a new owner declares occupancy."
       />
+
       <hr />
+
       <Section
         name="Forms"
-        blurb={`Forms are subject to change and the latest version is available online
-        at this site. Please contact the Strata Council if you have any
-        questions.`}
-        ><LinkList
+        blurb="Forms are subject to change and the latest version is available online at this site. Please contact the Strata Council if you have any questions."
+      >
+        <LinkList
           external
           links={[
             { href: "", text: "Form B" },
@@ -62,12 +55,6 @@ const DEPRECIATION_REPORTS = convertGlobToLinkList(
             },
           ]}
         />
-      </Section>
-
-      <hr />
-
-      <Section name="Depreciation reports">
-        <LinkList external links={DEPRECIATION_REPORTS} />
       </Section>
 
       <hr />
