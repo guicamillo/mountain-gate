@@ -34,15 +34,10 @@ const rules = [
     title: "Renovations",
     description: [
       '<b>Exterior Changes:</b> Any renovation that alters the exterior structure or appearance requires prior written approval from the council. Please use the "Permission to Alter Building Envelope" form for such changes. Provide detailed information in your request.',
-
       "<b>Interior Changes:</b> Interior improvements or upgrades must comply with local building codes, permits, and inspection processes where applicable. Cosmetic improvements like flooring or trim do not require council permission unless specified.",
-
       "<b>Insurance and Compliance:</b> Consult the strata insurance policy, the Strata Property Act, and your own insurance policy to determine coverage responsibilities for renovations and improvements. The Strata reserves the right to remove or repair, at the owner's cost, any improvement or renovation done without prior written permission or that does not meet building standards.",
-
       "<b>Always Ask:</b> It's always better to ask for permission before starting any project. For more information, read this helpful article [link to article]",
-    ]
-      .map((text) => `<li>${text}</li>`)
-      .join(""),
+    ],
     icon: "bx:bxs-home-smile",
   },
 ];
@@ -93,7 +88,11 @@ const download_links = [
             </div>
             <div>
               <h3 class="font-semibold text-lg">{item.title}</h3>
-              <p class="text-slate-500 mt-2 leading-relaxed" set:html={item.description} />
+              {Array.isArray(item.description) ? (
+                item.description.map((text) => <p class="text-slate-500 mt-2 leading-relaxed" set:html={text} />)
+              ) : (
+                <p class="text-slate-500 mt-2 leading-relaxed" set:html={item.description} />
+              )}
             </div>
           </div>
         ))
