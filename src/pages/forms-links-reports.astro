@@ -4,6 +4,12 @@ import Layout from "@layouts/Layout.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import LinkList from "@components/link-list.astro";
 import Section from "@components/section.astro";
+import { convertGlobToLinkList } from "@utils/get-all-files-from-folder";
+
+const DEPRECIATION_REPORTS = convertGlobToLinkList(
+  await Astro.glob("../../public/DEPRECIATION_REPORTS/*.pdf"),
+  `${import.meta.env.BASE_URL}`,
+);
 ---
 
 <Layout title="">
@@ -25,7 +31,9 @@ import Section from "@components/section.astro";
         </p>
         <p>NSF cheques and Bylaw infractions are subject to penalties and/or fines set out in the Bylaws and Rules.</p>
       </div>
+
       <hr />
+
       <Section
         name="Digital information policy"
         blurb={`The strata council will <b>never</b> request any personally identifying
@@ -57,22 +65,13 @@ import Section from "@components/section.astro";
       </Section>
 
       <hr />
+
       <Section name="Depreciation reports">
-        <LinkList
-          external
-          links={[
-            {
-              href: "",
-              text: "Depreciation Report (July 1, 2014)",
-            },
-            {
-              href: "",
-              text: "Depreciation Report (July 20, 2021)",
-            },
-          ]}
-        />
+        <LinkList external links={DEPRECIATION_REPORTS} />
       </Section>
+
       <hr />
+
       <Section name="Information links">
         <LinkList
           external
