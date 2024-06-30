@@ -11,9 +11,13 @@ import {
 } from "@utils/get-all-files-from-folder";
 
 const SMM = groupStrataMeetingMinutesPerYear(await Astro.glob("../../public/SMM/*.pdf"));
-const AGM = convertGlobToLinkList(await Astro.glob("../../public/AGM/*.pdf"));
-const DR = convertGlobToLinkList(await Astro.glob("../../public/DEPRECIATION_REPORTS/*.pdf"));
-const FINANCIAL_STATEMENT_LINKS = convertGlobToLinkList(await Astro.glob("../../public/FINANCIAL_STATEMENTS/*.pdf"));
+
+const AGM = convertGlobToLinkList(await Astro.glob("../../public/AGM/*.pdf"), `${import.meta.env.BASE_URL}`);
+
+const FINANCIAL_STATEMENT_LINKS = convertGlobToLinkList(
+  await Astro.glob("../../public/FINANCIAL_STATEMENTS/*.pdf"),
+  `${import.meta.env.BASE_URL}`,
+);
 ---
 
 <Layout title="">
@@ -38,7 +42,7 @@ const FINANCIAL_STATEMENT_LINKS = convertGlobToLinkList(await Astro.glob("../../
                       <LinkList
                         links={(entries as string[]).map((href) => ({
                           text: toHumanReadableFormat(href),
-                          href,
+                          href: `${import.meta.env.BASE_URL}/${href}`,
                         }))}
                         external
                       />

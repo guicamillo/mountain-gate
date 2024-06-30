@@ -8,8 +8,11 @@ const YMD_REGEXP = /(\d{4})\-(\d{2})\-(\d{2})/;
 
 const isSMM = (s: string) => s.startsWith("/SMM");
 const isAGM = (s: string) => s.startsWith("/AGM");
+
 const isFinancialStatement = (s: string) =>
   s.startsWith("/FINANCIAL_STATEMENTS") || s.startsWith("/Financial-Statement-Year-End");
+
+const isDepreciationReport = (s: string) => s.startsWith("/DEPRECIATION_REPORTS") || s.startsWith("/DR-");
 
 function removePublicFolder(s: string) {
   return s.replace("/public", "").replace("/mountain-gate", "").replace("/_astro", "");
@@ -22,20 +25,25 @@ const MONTHS = (() => {
 
 export function toHumanReadableFormat(input: string) {
   const cleanedInput = removePublicFolder(input);
-  const year = cleanedInput.match(YMD_REGEXP)?.[1];
-  const month = cleanedInput.match(YMD_REGEXP)?.[2];
+  const YYYY = cleanedInput.match(YMD_REGEXP)?.[1];
+  const MM = cleanedInput.match(YMD_REGEXP)?.[2];
+  const month = MONTHS[parseInt(MM!)];
 
   if (isSMM(cleanedInput)) {
     const special = cleanedInput.toLocaleLowerCase().includes("special") ? " <b>Special</b> " : "";
-    return `${MONTHS[parseInt(month!)]} &mdash; ${special}Strata Meeting Minutes`;
+    return `${month} &mdash; ${special}Strata Meeting Minutes`;
   }
 
   if (isAGM(cleanedInput)) {
-    return `${year} AGM Meeting Minutes`;
+    return `${YYYY} AGM Meeting Minutes`;
   }
 
   if (isFinancialStatement(cleanedInput)) {
-    return `${year} Financial Statement &mdash; Year End`;
+    return `${YYYY} Financial Statement &mdash; Year End`;
+  }
+
+  if (isDepreciationReport(cleanedInput)) {
+    return `${YYYY} ${month} &mdash; Depreciation report`;
   }
 
   return cleanedInput;
@@ -60,10 +68,10 @@ export function groupStrataMeetingMinutesPerYear(entries: Glob[]) {
   return groupedContents;
 }
 
-export function convertGlobToLinkList(entries: Glob[]): LinkDetails[] {
+export function convertGlobToLinkList(entries: Glob[], baseURL: string = ""): LinkDetails[] {
   return entries.reverse().map((e) => {
     return {
-      href: removePublicFolder(e.default),
+      href: baseURL + removePublicFolder(e.default),
       text: toHumanReadableFormat(e.default),
     };
   });
