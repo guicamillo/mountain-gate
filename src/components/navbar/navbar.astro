@@ -7,23 +7,23 @@ import { Image } from "astro:assets";
 const menuitems = [
   {
     title: "Bylaws & Rules",
-    path: `${import.meta.env.BASE_URL}/bylaws-and-rules`,
+    path: `/bylaws-and-rules`,
   },
   {
     title: "Roles and Responsibilities",
-    path: `${import.meta.env.BASE_URL}/roles-and-responsibilities`,
+    path: `/roles-and-responsibilities`,
   },
   {
     title: "Meetings & Reports",
-    path: `${import.meta.env.BASE_URL}/meetings-reports`,
+    path: `/meetings-reports`,
   },
   {
     title: "Forms & Links",
-    path: `${import.meta.env.BASE_URL}/forms-links`,
+    path: `/forms-links`,
   },
   {
     title: "Contact",
-    path: `${import.meta.env.BASE_URL}/contact`,
+    path: `/contact`,
   },
 ];
 ---
@@ -35,7 +35,7 @@ const menuitems = [
     <header class="z-40 sticky py-5 top-0 flex flex-col lg:flex-row justify-between items-center">
       <Astronav>
         <div class="flex w-full lg:w-auto items-center justify-between">
-          <a href={`${import.meta.env.BASE_URL}/`} class="text-lg tracking-tighter">
+          <a href={`/`} class="text-lg tracking-tighter">
             <div class="flex flex-row gap-1 items-center">
               <Image src={heroImage} alt="" width="50" loading="eager" format="svg" />
               <div class="flex flex-col gap-px-1">
