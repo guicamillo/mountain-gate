@@ -6,7 +6,7 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://guicamillo.github.io",
-  base: "mountain-gate",
+  site: "https://mountaingate.ca",
+  //base: "mountain-gate",
   integrations: [tailwind(), mdx(), sitemap(), icon()],
 });
