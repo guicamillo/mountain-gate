@@ -10,13 +10,13 @@ import {
   toHumanReadableFormat,
 } from "@utils/get-all-files-from-folder";
 
-const SMM = groupStrataMeetingMinutesPerYear(await Astro.glob("../../public/SMM/*.pdf"), 'SMM/');
+const SMM = groupStrataMeetingMinutesPerYear(await Astro.glob("../../public/SMM/*.pdf"), '/SMM/');
 
-const AGM = convertGlobToLinkList(await Astro.glob("../../public/AGM/*.pdf"), 'AGM/');
+const AGM = convertGlobToLinkList(await Astro.glob("../../public/AGM/*.pdf"), '/AGM/');
 
-const FINANCIAL_STATEMENT_LINKS = convertGlobToLinkList(await Astro.glob("../../public/FINANCIAL_STATEMENTS/*.pdf"), 'FINANCIAL_STATEMENTS/');
+const FINANCIAL_STATEMENT_LINKS = convertGlobToLinkList(await Astro.glob("../../public/FINANCIAL_STATEMENTS/*.pdf"), '/FINANCIAL_STATEMENTS/');
 
-const DEPRECIATION_REPORTS = convertGlobToLinkList(await Astro.glob("../../public/DEPRECIATION_REPORTS/*.pdf"), 'DEPRECIATION_REPORTS/');
+const DEPRECIATION_REPORTS = convertGlobToLinkList(await Astro.glob("../../public/DEPRECIATION_REPORTS/*.pdf"), '/DEPRECIATION_REPORTS/');
 ---
 
 <Layout title="">
