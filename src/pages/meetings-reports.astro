@@ -48,7 +48,7 @@ const DEPRECIATION_REPORTS = convertGlobToLinkList(
                       <LinkList
                         links={(entries as string[]).map((href) => ({
                           text: toHumanReadableFormat(href),
-                          href: `/SMM/${href}`,
+                          href: "/SMM" + href,
                         }))}
                         external
                       />

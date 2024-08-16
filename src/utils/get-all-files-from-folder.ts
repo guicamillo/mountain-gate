@@ -76,7 +76,7 @@ export function groupStrataMeetingMinutesPerYear(entries: Glob[]) {
 export function convertGlobToLinkList(entries: Glob[], baseURL: string = ""): LinkDetails[] {
   return entries.reverse().map((e) => {
     return {
-      href: baseURL + removePublicFolder(e.default),
+      href: baseURL + removefileHash(removePublicFolder(e.default)),
       text: toHumanReadableFormat(e.default),
     };
   });
