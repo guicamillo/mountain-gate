@@ -29,7 +29,7 @@ const MONTHS = (() => {
 })();
 
 export function toHumanReadableFormat(input: string) {
-  const cleanedInput = removefileHash(removePublicFolder(input));
+  const cleanedInput = removePublicFolder(input);
   const YYYY = cleanedInput.match(YMD_REGEXP)?.[1];
   const MM = cleanedInput.match(YMD_REGEXP)?.[2];
   const month = MONTHS[parseInt(MM!)];
@@ -58,7 +58,7 @@ export function groupStrataMeetingMinutesPerYear(entries: Glob[]) {
   const groupedContents: Record<string, string[]> = {};
 
   entries.forEach((e) => {
-    const cleanedFileName = removePublicFolder(e.default);
+    const cleanedFileName = removefileHash(removePublicFolder(e.default));
     const parsedYear = cleanedFileName.match(YMD_REGEXP)?.[1];
     if (!parsedYear) throw new Error("Could not extract date from: " + cleanedFileName);
 
