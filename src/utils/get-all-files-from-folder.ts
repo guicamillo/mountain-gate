@@ -18,13 +18,18 @@ function removePublicFolder(s: string) {
   return s.replace("/public", "").replace("/mountain-gate", "").replace("/_astro", "");
 }
 
+function removefileHash(s: string) {
+  const [filename, hash, extension] = s.split(".");
+  return [filename, extension].join(".");
+}
+
 const MONTHS = (() => {
   const format = new Intl.DateTimeFormat("en-US", { month: "long" }).format;
   return [0, ...Array(12).keys()].map((m) => format(new Date(Date.UTC(2021, (m + 1) % 12))));
 })();
 
 export function toHumanReadableFormat(input: string) {
-  const cleanedInput = removePublicFolder(input);
+  const cleanedInput = removefileHash(removePublicFolder(input));
   const YYYY = cleanedInput.match(YMD_REGEXP)?.[1];
   const MM = cleanedInput.match(YMD_REGEXP)?.[2];
   const month = MONTHS[parseInt(MM!)];
