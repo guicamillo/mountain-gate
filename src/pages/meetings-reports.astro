@@ -10,13 +10,19 @@ import {
   toHumanReadableFormat,
 } from "@utils/get-all-files-from-folder";
 
-const SMM = groupStrataMeetingMinutesPerYear(await Astro.glob("../../public/SMM/*.pdf"), '/SMM');
+const SMM = groupStrataMeetingMinutesPerYear(await Astro.glob("../../public/SMM/*.pdf"));
 
-const AGM = convertGlobToLinkList(await Astro.glob("../../public/AGM/*.pdf"), '/AGM');
+const AGM = convertGlobToLinkList(await Astro.glob("../../public/AGM/*.pdf"), "/AGM");
 
-const FINANCIAL_STATEMENT_LINKS = convertGlobToLinkList(await Astro.glob("../../public/FINANCIAL_STATEMENTS/*.pdf"), '/FINANCIAL_STATEMENTS');
+const FINANCIAL_STATEMENT_LINKS = convertGlobToLinkList(
+  await Astro.glob("../../public/FINANCIAL_STATEMENTS/*.pdf"),
+  "/FINANCIAL_STATEMENTS",
+);
 
-const DEPRECIATION_REPORTS = convertGlobToLinkList(await Astro.glob("../../public/DEPRECIATION_REPORTS/*.pdf"), '/DEPRECIATION_REPORTS');
+const DEPRECIATION_REPORTS = convertGlobToLinkList(
+  await Astro.glob("../../public/DEPRECIATION_REPORTS/*.pdf"),
+  "/DEPRECIATION_REPORTS",
+);
 ---
 
 <Layout title="">
@@ -31,6 +37,7 @@ const DEPRECIATION_REPORTS = convertGlobToLinkList(await Astro.glob("../../publi
           name="Strata Meeting Minutes"
           blurb="Strata meetings are held approximately every 4 to 6 weeks. Minutes will be posted here and distributed to owners within 10 business days from the previous meeting."
         >
+          <pre>{JSON.stringify(SMM, null, 2)}</pre>
           {
             Object.entries(SMM)
               .reverse()
