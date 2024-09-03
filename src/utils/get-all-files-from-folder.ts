@@ -23,10 +23,20 @@ function removefileHash(s: string) {
   return [filename, extension].join(".");
 }
 
-const MONTHS = (() => {
-  const format = new Intl.DateTimeFormat("en-US", { month: "long" }).format;
-  return [0, ...Array(12).keys()].map((m) => format(new Date(Date.UTC(2021, (m + 1) % 12))));
-})();
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+] as const;
 
 export function toHumanReadableFormat(input: string) {
   const cleanedInput = removePublicFolder(input);
