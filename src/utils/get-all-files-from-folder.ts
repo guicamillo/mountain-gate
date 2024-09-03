@@ -24,6 +24,7 @@ function removefileHash(s: string) {
 }
 
 const MONTHS = [
+  undefined, // obviously there's no month zero
   "January",
   "February",
   "March",
@@ -42,10 +43,12 @@ export function toHumanReadableFormat(input: string) {
   const cleanedInput = removePublicFolder(input);
   const YYYY = cleanedInput.match(YMD_REGEXP)?.[1];
   const MM = cleanedInput.match(YMD_REGEXP)?.[2];
+
   const month = MONTHS[parseInt(MM!)];
 
   if (isSMM(cleanedInput)) {
     const special = cleanedInput.toLocaleLowerCase().includes("special") ? " <b>Special</b> " : "";
+
     return `${month} &mdash; ${special}Strata Meeting Minutes`;
   }
 
