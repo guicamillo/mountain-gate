@@ -48,7 +48,7 @@ import { formatCompactDate, formatWeekdayShort } from "@utils/date-builders";
               <div class="prose">
                 <h3 class="text-3xl">{streetName} Place</h3>
               </div>
-              <div class:list={["my-4", "grid", "gap-3", `grid-cols-${ParticipantsPerStreet[streetName].length}`]}>
+              <div class:list={["my-4", "grid", "gap-3", "grid-cols-7"]}>
                 {ParticipantsPerStreet[streetName].map((houseNumber) => {
                   return (
                     <div class="py-1 text-center bg-slate-500 text-slate-50">
