@@ -1,0 +1,84 @@
+---
+import Container from "@components/container.astro";
+import Layout from "@layouts/Layout.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import {
+  GreenBinPickupDates,
+  ParticipantsPerStreet,
+  SchedulePerStreet,
+  tuesdays,
+  canadianHolidays,
+} from "@utils/green-bin-schedule-builder";
+import { formatCompactDate, formatWeekdayShort } from "@utils/date-builders";
+---
+
+<Layout title="">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Green Bin Schedule</Fragment>
+      <Fragment slot="desc">&nbsp;</Fragment>
+    </Sectionhead>
+
+    <div class="prose">
+      <ul>
+        <li>
+          Green bin pick up is every Tuesday except if there is a holiday Monday (Bolded on Calendar) Pickup is moved to
+          next day.
+        </li>
+        <li>Green bin is to be placed curbside by 7:30 AM on the day of pickup.</li>
+        <li>The city is often picking up green bin by <strong>8 am</strong>.</li>
+        <li><strong>Do not</strong> put green bin out night before because Barney the Bear will raid it.</li>
+        <li>Green bin must be put back by 7 PM the same day of pickup</li>
+        <li>
+          <strong>You</strong> are responsible to trade dates with a neighbour if you are away on your designated date.
+        </li>
+        <li>
+          Leave the green bin out for entire day on the first pickup of every month - A service comes by to wash the
+          bin. Look for <strong>WASH</strong> on the calendar
+        </li>
+      </ul>
+    </div>
+    <hr class="my-5" />
+    <div class="my-6">
+      {
+        Object.entries(SchedulePerStreet).map(([streetName]) => {
+          const seenMonths = new Set();
+          return (
+            <div>
+              <div class="prose">
+                <h3 class="text-3xl">{streetName} Place</h3>
+              </div>
+              <div class:list={["my-4", "grid", "gap-3", `grid-cols-${ParticipantsPerStreet[streetName].length}`]}>
+                {ParticipantsPerStreet[streetName].map((houseNumber) => {
+                  return (
+                    <div class="py-1 text-center bg-slate-500 text-slate-50">
+                      <strong class="text-2xl slashed-zero lining-nums">{houseNumber}</strong>
+                    </div>
+                  );
+                })}
+                {GreenBinPickupDates.map((date) => {
+                  //hackily offsets the date to PST timezone
+                  const d = new Date(`${date}T00:00:00-08:00`);
+                  const isWashDay = !seenMonths.has(d.getMonth());
+                  seenMonths.add(d.getMonth());
+
+                  return (
+                    <div class:list={["border", "py-3", "text-center", "shadow-md", isWashDay && "bg-slate-100"]}>
+                      <div class="font-extralight">{formatWeekdayShort(d)}</div>
+                      <div class="font-normal">{formatCompactDate(d)}</div>
+                      <div class="font-bold" set:html={isWashDay ? "WASH" : "&nbsp;"} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-1 gap-10 mt-16">
+      <p class="text-slate-500 mt-2 leading-relaxed">Thank you for your cooperation!</p>
+    </div>
+  </Container>
+</Layout>
