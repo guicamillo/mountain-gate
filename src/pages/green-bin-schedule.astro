@@ -59,6 +59,7 @@ import { formatCompactDate, formatWeekdayShort } from "@utils/date-builders";
                   "gap-1",
                   "lg:gap-3",
                   "grid-cols-[100px_100px_100px_100px_100px_100px_100px]",
+                  "md:grid-cols-7",
                   "lg:grid-cols-7",
                   "overflow-x-auto",
                   "lg:w-auto",
@@ -94,7 +95,7 @@ import { formatCompactDate, formatWeekdayShort } from "@utils/date-builders";
                     >
                       <div class="font-extralight text-sm">{weekDay}</div>
                       <div class="font-normal">{formatCompactDate(d)}</div>
-                      <div class="font-bold  text-sm" set:html={isWashDay ? "WASH" : "&nbsp;"} />
+                      <div class="font-bold text-sm" set:html={isWashDay ? "WASH" : "&nbsp;"} />
                     </div>
                   );
                 })}
