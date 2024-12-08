@@ -2,11 +2,11 @@
 const { align = "center" } = Astro.props;
 ---
 
-<div class:list={["mt-16", align === "center" && "text-center"]}>
+<div class:list={["mt-16", align === "center" && "text-center", "print:mt-0"]}>
   <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
     <slot name="title">Title</slot>
   </h1>
-  <p class="text-lg mt-4 text-slate-600">
-    <slot name="desc"></slot>
+  <p class="text-lg mt-4 text-slate-600 print:mt-1">
+    <slot name="desc" />
   </p>
 </div>
