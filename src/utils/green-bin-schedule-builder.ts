@@ -42,7 +42,8 @@ function assignPickupDates(dates: string[], participants: string[]): Record<stri
   return assignments;
 }
 
-export const year = new Date().getFullYear();
+// export const year = new Date().getFullYear();
+export const year = 2025; //overriding to generate it for next year.
 
 export const tuesdays = getTuesdays(year);
 export const canadianHolidays = getCanadianHolidays(year);
