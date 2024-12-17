@@ -52,7 +52,7 @@ export const GreenBinPickupDates = getGreenBinPickupDates(year);
 const Streets = ["Ridgemoor"] as const;
 
 export const ParticipantsPerStreet: Record<(typeof Streets)[number], string[]> = {
-  Ridgemoor: ["9120", "9130", "9140", "9150", "9155", "9145", "9125"],
+  Ridgemoor: ["9120", "9130", "9140", "9150", "9155", "9145", "9135", "9125"],
 };
 
 export const SchedulePerStreet: Record<(typeof Streets)[number], Record<string, string>> = {
