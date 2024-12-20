@@ -13,17 +13,17 @@ import { formatCompactDate, formatWeekdayShort } from "@utils/date-builders";
       <Fragment slot="desc">Schedule for {year}</Fragment>
     </Sectionhead>
 
-    <div class="my-8 print:hidden">
-      <ol class="list-inside space-y-4 text-gray-700 print:space-y-1">
+    <div class="my-8 print:my-3">
+      <ol class="list-inside space-y-4 text-gray-700 print:space-y-2 print:text-xs">
         <li>
           <strong>Pickup Schedule:</strong>
           Green bin collection occurs every <strong>Tuesday</strong>, unless preceded by a holiday Monday. In such
-          cases, collection is shifted to <strong>Wednesday</strong>.
+          cases, collection is shifted to <u><strong>Wednesday</strong></u>.
         </li>
         <li>
           <strong>Placement Time:</strong>
           Place the green bin curbside by <strong>7:30 AM</strong> on the pickup day. Collection typically happens around
-          <strong>8:00 AM</strong>.<br />
+          <strong>8:00 AM</strong>.
           <span class="italic">Important: Do not place the bin out the night before to avoid attracting wildlife.</span>
         </li>
         <li>
@@ -37,24 +37,24 @@ import { formatCompactDate, formatWeekdayShort } from "@utils/date-builders";
         <li>
           <strong>Monthly Bin Cleaning:</strong>
           On the <strong>first pickup of each month</strong>, leave the green bin curbside for the entire day. A
-          cleaning service will wash the bin.<br />
-          These dates are marked with <strong>“WASH”</strong> on the calendar.
+          cleaning service will wash the bin. These dates are marked with <strong>“WASH”</strong> on the calendar.
         </li>
       </ol>
     </div>
     <hr class="my-5 print:hidden" />
-    <div class="py-6 print:py-0">
+    <div class="py-6 print:py-3">
       {
         Object.entries(SchedulePerStreet).map(([streetName]) => {
           const seenMonths = new Set();
           return (
             <div>
               <div class="prose">
-                <h3 class="text-3xl">{streetName} Place</h3>
+                <h3 class="text-3xl print:text-2xl print:-ml-3">{streetName} Place</h3>
               </div>
               <div
                 class:list={[
                   "my-4",
+                  "print:my-2",
                   "grid",
                   "gap-1",
                   "lg:gap-3",
@@ -70,8 +70,8 @@ import { formatCompactDate, formatWeekdayShort } from "@utils/date-builders";
               >
                 {ParticipantsPerStreet[streetName].map((houseNumber) => {
                   return (
-                    <div class="py-1 text-center bg-slate-500 text-slate-50">
-                      <strong class="text-2xl slashed-zero lining-nums">{houseNumber}</strong>
+                    <div class="py-1 print:py-0 text-center bg-slate-500 text-slate-50">
+                      <strong class="text-2xl print:text-xl slashed-zero lining-nums">{houseNumber}</strong>
                     </div>
                   );
                 })}
@@ -93,7 +93,16 @@ import { formatCompactDate, formatWeekdayShort } from "@utils/date-builders";
                         isWashDay && "bg-slate-100",
                       ]}
                     >
-                      <div class="font-extralight text-sm">{weekDay}</div>
+                      <div
+                        class:list={[
+                          "font-extralight",
+                          "text-sm",
+                          weekDay === "Wed" && "underline",
+                          "underline-offset-4",
+                        ]}
+                      >
+                        {weekDay}
+                      </div>
                       <div class="font-normal">{formatCompactDate(d)}</div>
                       <div class="font-bold text-sm" set:html={isWashDay ? "WASH" : "&nbsp;"} />
                     </div>
