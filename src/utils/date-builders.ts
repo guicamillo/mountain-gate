@@ -1,3 +1,9 @@
+function offsetToPST(d: Date) {
+  const YMD = d.toISOString().split("T")[0];
+
+  return new Date(`${YMD}T00:00:00-08:00`);
+}
+
 export function getCanadianHolidays(year: number) {
   const holidays: { name: string; date: Date }[] = [];
 
@@ -48,7 +54,10 @@ export function getCanadianHolidays(year: number) {
   // Boxing Day (Federal & BC)
   holidays.push({ name: "Boxing Day", date: new Date(year, 11, 26) });
 
-  return holidays;
+  return holidays.map((h) => ({
+    name: h.name,
+    date: offsetToPST(h.date),
+  }));
 }
 
 // Helper function to calculate Good Friday

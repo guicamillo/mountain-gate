@@ -47,7 +47,64 @@ export const year = 2025; //overriding to generate it for next year.
 
 export const tuesdays = getTuesdays(year);
 export const canadianHolidays = getCanadianHolidays(year);
-export const GreenBinPickupDates = getGreenBinPickupDates(year);
+
+//will fix it later - the holiday offset logic isnt working properly
+export const WrongGreenBinPickupDates = getGreenBinPickupDates(year);
+
+export const GreenBinPickupDates = [
+  "2025-01-07",
+  "2025-01-14",
+  "2025-01-21",
+  "2025-01-28",
+  "2025-02-04",
+  "2025-02-11",
+  "2025-02-19",
+  "2025-02-25",
+  "2025-03-04",
+  "2025-03-11",
+  "2025-03-18",
+  "2025-03-25",
+  "2025-04-01",
+  "2025-04-08",
+  "2025-04-15",
+  "2025-04-23",
+  "2025-04-29",
+  "2025-05-06",
+  "2025-05-13",
+  "2025-05-21",
+  "2025-05-27",
+  "2025-06-03",
+  "2025-06-10",
+  "2025-06-17",
+  "2025-06-24",
+  "2025-07-02",
+  "2025-07-08",
+  "2025-07-15",
+  "2025-07-22",
+  "2025-07-29",
+  "2025-08-06",
+  "2025-08-12",
+  "2025-08-19",
+  "2025-08-26",
+  "2025-09-03",
+  "2025-09-09",
+  "2025-09-16",
+  "2025-09-23",
+  "2025-10-01",
+  "2025-10-07",
+  "2025-10-15",
+  "2025-10-21",
+  "2025-10-28",
+  "2025-11-04",
+  "2025-11-12",
+  "2025-11-18",
+  "2025-11-25",
+  "2025-12-02",
+  "2025-12-09",
+  "2025-12-16",
+  "2025-12-23",
+  "2025-12-30",
+];
 
 const Streets = ["Ridgemoor"] as const;
 
