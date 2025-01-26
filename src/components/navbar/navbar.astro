@@ -44,21 +44,21 @@ const menuitems = [
           <a href={`/`} class="text-lg tracking-tighter">
             <div class="flex flex-row gap-1 items-center">
               <div class="relative w-[50px] h-[50px] overflow-hidden">
-                <Image 
-                  src={heroImage} 
-                  alt="" 
-                  width="50" 
-                  loading="eager" 
-                  format="svg" 
-                  class="absolute inset-0 transition-all duration-500 rotate-0 scale-100 dark:rotate-[360deg] dark:scale-0" 
+                <Image
+                  src={heroImage}
+                  alt=""
+                  width="50"
+                  loading="eager"
+                  format="svg"
+                  class="absolute inset-0 block dark:hidden"
                 />
-                <Image 
-                  src={heroDarkImage} 
-                  alt="" 
-                  width="50" 
-                  loading="eager" 
-                  format="svg" 
-                  class="absolute inset-0 transition-all duration-500 rotate-[-360deg] scale-0 dark:rotate-0 dark:scale-100" 
+                <Image
+                  src={heroDarkImage}
+                  alt=""
+                  width="50"
+                  loading="eager"
+                  format="svg"
+                  class="absolute inset-0 hidden dark:block"
                 />
               </div>
               <div class="flex flex-col gap-px-1">
