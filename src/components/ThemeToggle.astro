@@ -1,0 +1,96 @@
+---
+
+---
+
+<button
+  id="theme-toggle"
+  class="hidden lg:block rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700"
+  aria-label="Toggle dark mode"
+>
+  <svg
+    id="theme-icon"
+    class="w-5 h-5 text-gray-700 dark:text-gray-200"
+    fill="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <mask id="moon-mask">
+      <rect x="0" y="0" width="100%" height="100%" fill="white"></rect>
+      <circle class="moon-circle" cx="24" cy="10" r="6" fill="black"></circle>
+    </mask>
+    <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)"></circle>
+    <g class="sun-beams">
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </g>
+  </svg>
+</button>
+
+<style>
+  #theme-icon {
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    transform-origin: center;
+    transition: transform 500ms ease;
+  }
+
+  .moon-circle {
+    opacity: 0;
+    transform-origin: 24px 10px;
+    transition: transform 500ms ease;
+  }
+
+  .sun-beams {
+    transform-origin: center;
+    transition: transform 500ms ease;
+  }
+
+  :global(.dark) .moon-circle {
+    opacity: 1;
+    transform: translate(-12px, -1.1px);
+  }
+
+  :global(.dark) .sun-beams {
+    transform: rotate(45deg) scale(0);
+  }
+
+  :global(.dark) #theme-icon {
+    transform: rotate(45deg);
+  }
+</style>
+
+<script>
+  function updateTheme() {
+    const isDark =
+      localStorage.getItem("color-theme") === "dark" ||
+      (!localStorage.getItem("color-theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }
+
+  updateTheme();
+
+  const themeToggleBtn = document.getElementById("theme-toggle");
+  themeToggleBtn?.addEventListener("click", function () {
+    const currentTheme = localStorage.getItem("color-theme");
+
+    if (currentTheme === "dark") {
+      localStorage.setItem("color-theme", "light");
+    } else {
+      localStorage.setItem("color-theme", "dark");
+    }
+
+    updateTheme();
+  });
+</script>

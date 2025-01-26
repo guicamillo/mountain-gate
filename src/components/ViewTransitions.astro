@@ -1,0 +1,15 @@
+---
+---
+<script>
+  document.addEventListener('astro:after-swap', () => {
+    // Check localStorage first, then system preference
+    const isDark = localStorage.getItem('color-theme') === 'dark' || 
+      (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  });
+</script>

@@ -14,16 +14,16 @@ import { formatCompactDate, formatWeekdayShort } from "@utils/date-builders";
     </Sectionhead>
 
     <div class="my-8 print:my-3">
-      <ol class="list-inside space-y-4 text-gray-700 print:space-y-2 print:text-xs">
+      <ol class="list-inside space-y-4 text-gray-700 dark:text-gray-300 print:space-y-2 print:text-xs">
         <li>
-          <strong>Pickup Schedule:</strong>
-          Green bin collection occurs every <strong>Tuesday</strong>, unless preceded by a holiday Monday. In such
-          cases, collection is shifted to <u><strong>Wednesday</strong></u>.
+          <strong class="text-gray-900 dark:text-white">Pickup Schedule:</strong>
+          Green bin collection occurs every <strong class="text-gray-900 dark:text-white">Tuesday</strong>, unless preceded by a holiday Monday. In such
+          cases, collection is shifted to <u><strong class="text-gray-900 dark:text-white">Wednesday</strong></u>.
         </li>
         <li>
-          <strong>Placement Time:</strong>
-          Place the green bin curbside by <strong>7:30 AM</strong> on the pickup day. Collection typically happens around
-          <strong>8:00 AM</strong>.
+          <strong class="text-gray-900 dark:text-white">Placement Time:</strong>
+          Place the green bin curbside by <strong class="text-gray-900 dark:text-white">7:30 AM</strong> on the pickup day. Collection typically happens around
+          <strong class="text-gray-900 dark:text-white">8:00 AM</strong>.
           <span class="italic">Important: Do not place the bin out the night before to avoid attracting wildlife.</span>
         </li>
         <li>
@@ -41,14 +41,14 @@ import { formatCompactDate, formatWeekdayShort } from "@utils/date-builders";
         </li>
       </ol>
     </div>
-    <hr class="my-5 print:hidden" />
+    <hr class="my-5 print:hidden dark:border-gray-700" />
     <div class="py-6 print:py-3">
       {
         Object.entries(SchedulePerStreet).map(([streetName]) => {
           const seenMonths = new Set();
           return (
             <div>
-              <div class="prose">
+              <div class="prose dark:prose-invert">
                 <h3 class="text-3xl print:text-2xl print:-ml-3">{streetName} Place</h3>
               </div>
               <div
@@ -76,7 +76,6 @@ import { formatCompactDate, formatWeekdayShort } from "@utils/date-builders";
                   );
                 })}
                 {GreenBinPickupDates.map((date) => {
-                  //hackily offsets the date to PST timezone
                   const d = new Date(`${date}T00:00:00-08:00`);
                   const isWashDay = !seenMonths.has(d.getMonth());
                   seenMonths.add(d.getMonth());
@@ -86,26 +85,29 @@ import { formatCompactDate, formatWeekdayShort } from "@utils/date-builders";
                     <div
                       class:list={[
                         "border",
+                        "border-gray-200",
+                        "dark:border-gray-700",
                         "py-3",
                         "text-center",
                         "shadow-sm",
                         "print:shadow-none",
                         "lg:shadow-md",
-                        isWashDay && "bg-slate-100",
+                        isWashDay ? "bg-slate-100 dark:bg-gray-800" : "dark:bg-gray-900",
                       ]}
                     >
                       <div
                         class:list={[
                           "font-extralight",
                           "text-sm",
+                          "dark:text-gray-300",
                           weekDay === "Wed" && "underline",
                           "underline-offset-4",
                         ]}
                       >
                         {weekDay}
                       </div>
-                      <div class="font-normal">{formatCompactDate(d)}</div>
-                      <div class="font-bold text-sm" set:html={isWashDay ? "WASH" : "&nbsp;"} />
+                      <div class="font-normal dark:text-gray-200">{formatCompactDate(d)}</div>
+                      <div class="font-bold text-sm dark:text-gray-100" set:html={isWashDay ? "WASH" : "&nbsp;"} />
                     </div>
                   );
                 })}
@@ -116,7 +118,7 @@ import { formatCompactDate, formatWeekdayShort } from "@utils/date-builders";
       }
     </div>
     <div class="print:hidden">
-      <p class="text-slate-500 mt-2 leading-relaxed">Thank you for your cooperation!</p>
+      <p class="text-slate-500 dark:text-gray-400 mt-2 leading-relaxed">Thank you for your cooperation!</p>
     </div>
   </Container>
 </Layout>

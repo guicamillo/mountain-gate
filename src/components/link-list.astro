@@ -17,16 +17,19 @@ const { links, external = false } = Astro.props;
 
 {
   links && (
-    <div class="prose prose-sm">
+    <div class="prose prose-sm dark:prose-invert">
       <ul class="text-sm font-thin">
         {links.map(({ href, external: externalOverride = external, text }) => {
           const ActualContent = externalOverride ? (
             <>
-              <span set:html={text} />
-              <Icon class="ms-1 transition-all opacity-10 group-hover:opacity-100" name="bx:link-external" />
+              <span set:html={text} class="text-gray-700 dark:text-gray-300" />
+              <Icon
+                class="ms-1 transition-all opacity-10 dark:opacity-50 group-hover:opacity-100 text-gray-600 dark:text-gray-200"
+                name="bx:link-external"
+              />
             </>
           ) : (
-            <span set:html={text} />
+            <span set:html={text} class="text-gray-700 dark:text-gray-300" />
           );
 
           return (
@@ -36,7 +39,7 @@ const { links, external = false } = Astro.props;
                 target={externalOverride ? "_blank" : ""}
                 title={externalOverride ? "Opens in a new tab" : ""}
                 rel="noopener noreferrer"
-                class="group flex items-center font-thin decoration-slate-300 hover:decoration-slate-700 hover:decoration-2 underline-offset-0 hover:underline-offset-1 transition-all duration-150 ease-in-out"
+                class="group flex items-center font-thin decoration-slate-300 dark:decoration-gray-600 hover:decoration-slate-700 dark:hover:decoration-gray-300 hover:decoration-2 underline-offset-0 hover:underline-offset-1 transition-all duration-150 ease-in-out"
               >
                 {ActualContent}
               </a>
