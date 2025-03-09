@@ -64,7 +64,17 @@ export function toHumanReadableFormat(input: string) {
     return `${YYYY} ${month} &mdash; Depreciation report`;
   }
 
+  if(isDraft(cleanedInput)){
+    return `<div class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-blue-700/10 ring-inset"> DRAFT </div> ${cleanedInput.replace(/draft/i, '')}`;
+  }
+
+
   return cleanedInput;
+}
+
+
+function isDraft(s:string){
+  return s.toUpperCase().includes('DRAFT');
 }
 
 export function groupStrataMeetingMinutesPerYear(entries: Glob[]) {
