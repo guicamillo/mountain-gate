@@ -1,6 +1,12 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
+import { electricityConsumptionData } from "./electricity-consumption-data.ts";
+
+// Get transformer data
+const moorside = electricityConsumptionData["26730028"];
+const ridgemoor = electricityConsumptionData["26730050"];
+const braemoor = electricityConsumptionData["26730039"];
 ---
 
 <Layout title="Electricity Consumption Report">
@@ -10,102 +16,304 @@ import { Icon } from "astro-icon/components";
   >
     <div class="container mx-auto px-6 py-20">
       <div class="text-center mb-16">
-        <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">Electricity Consumption</h1>
+        <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
+          Electricity Consumption Report
+        </h1>
         <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
           Comprehensive analysis of energy usage patterns and efficiency metrics for Strata NW2040
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg">
-          <div
-            class="flex items-center justify-center w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full mb-4 mx-auto"
-          >
-            <Icon name="bx:bxs-bolt" class="text-2xl text-green-600 dark:text-green-400" />
-          </div>
-          <h3 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-2">Current Usage</h3>
-          <p class="text-4xl font-bold text-center text-green-600 dark:text-green-400 mb-2">2,847 kWh</p>
-          <p class="text-sm text-center text-gray-500 dark:text-gray-400">This Month</p>
-        </div>
+      <!-- Current Situation Overview -->
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl mb-8">
+          <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">Current Situation</h2>
+          <p class="text-lg text-center text-gray-600 dark:text-gray-300 mb-12">
+            Three transformers distributed unevenly across the complex
+          </p>
 
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg">
-          <div
-            class="flex items-center justify-center w-16 h-16 bg-yellow-100 dark:bg-yellow-900 rounded-full mb-4 mx-auto"
-          >
-            <Icon name="bx:trending-up" class="text-2xl text-yellow-600 dark:text-yellow-400" />
-          </div>
-          <h3 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-2">Efficiency</h3>
-          <p class="text-4xl font-bold text-center text-yellow-600 dark:text-yellow-400 mb-2">87%</p>
-          <p class="text-sm text-center text-gray-500 dark:text-gray-400">vs. Last Month</p>
-        </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Transformer 26730050 - Ridgemoor -->
+            <div
+              class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-6 border-2 border-gray-200 dark:border-slate-600"
+            >
+              <div class="text-center mb-4">
+                <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="bx:bxs-bolt" class="text-2xl text-white" />
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{ridgemoor.name}</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  Moderate Usage • {ridgemoor.maxRating} • {ridgemoor.totalNumberOfServicedUnits} units
+                </p>
+              </div>
+              <div class="space-y-3">
+                <div class="bg-white dark:bg-slate-700 rounded-lg p-3">
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Units Connected</p>
+                  <p class="text-2xl font-bold text-gray-900 dark:text-white">{ridgemoor.totalNumberOfServicedUnits}</p>
+                </div>
+                <div class="bg-white dark:bg-slate-700 rounded-lg p-3">
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Max Rated Capacity</p>
+                  <p class="text-2xl font-bold text-gray-900 dark:text-white">{ridgemoor.maxRating}</p>
+                </div>
+                <div class="bg-white dark:bg-slate-700 rounded-lg p-3">
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Current Peak Usage</p>
+                  <p class="text-lg font-bold text-red-600 dark:text-red-400">
+                    {ridgemoor.currentUsage.max.Afternoon} kWh
+                    <span class="text-sm text-gray-500"
+                      >({
+                        ((ridgemoor.currentUsage.max.Afternoon / parseInt(ridgemoor.maxRating)) * 100).toFixed(0)
+                      }%)</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
 
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg">
-          <div class="flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900 rounded-full mb-4 mx-auto">
-            <Icon name="bx:bxs-shield-alt-2" class="text-2xl text-red-600 dark:text-red-400" />
+            <!-- Transformer 26730028 - Moorside -->
+            <div
+              class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-6 border-2 border-gray-200 dark:border-slate-600"
+            >
+              <div class="text-center mb-4">
+                <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="bx:bxs-bolt" class="text-2xl text-white" />
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{moorside.name}</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  Highest Usage • {moorside.maxRating} • {moorside.totalNumberOfServicedUnits} units
+                </p>
+              </div>
+              <div class="space-y-3">
+                <div class="bg-white dark:bg-slate-700 rounded-lg p-3">
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Units Connected</p>
+                  <p class="text-2xl font-bold text-gray-900 dark:text-white">{moorside.totalNumberOfServicedUnits}</p>
+                </div>
+                <div class="bg-white dark:bg-slate-700 rounded-lg p-3">
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Max Rated Capacity</p>
+                  <p class="text-2xl font-bold text-gray-900 dark:text-white">{moorside.maxRating}</p>
+                </div>
+                <div class="bg-white dark:bg-slate-700 rounded-lg p-3">
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Current Peak Usage</p>
+                  <p class="text-lg font-bold text-orange-600 dark:text-orange-400">
+                    {moorside.currentUsage.max.Evening} kWh
+                    <span class="text-sm text-gray-500"
+                      >({((moorside.currentUsage.max.Evening / parseInt(moorside.maxRating)) * 100).toFixed(0)}%)</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Transformer 26730039 - Braemoor -->
+            <div
+              class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-6 border-2 border-gray-200 dark:border-slate-600"
+            >
+              <div class="text-center mb-4">
+                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="bx:bxs-bolt" class="text-2xl text-white" />
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{braemoor.name}</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  Lowest Usage • {braemoor.maxRating} • {braemoor.totalNumberOfServicedUnits} units
+                </p>
+              </div>
+              <div class="space-y-3">
+                <div class="bg-white dark:bg-slate-700 rounded-lg p-3">
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Units Connected</p>
+                  <p class="text-2xl font-bold text-gray-900 dark:text-white">{braemoor.totalNumberOfServicedUnits}</p>
+                </div>
+                <div class="bg-white dark:bg-slate-700 rounded-lg p-3">
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Max Rated Capacity</p>
+                  <p class="text-2xl font-bold text-gray-900 dark:text-white">{braemoor.maxRating}</p>
+                </div>
+                <div class="bg-white dark:bg-slate-700 rounded-lg p-3">
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Current Peak Usage</p>
+                  <p class="text-lg font-bold text-green-600 dark:text-green-400">
+                    {braemoor.currentUsage.max.Afternoon} kWh
+                    <span class="text-sm text-gray-500"
+                      >({
+                        ((braemoor.currentUsage.max.Afternoon / parseInt(braemoor.maxRating)) * 100).toFixed(0)
+                      }%)</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-2">Max Limit</h3>
-          <p class="text-4xl font-bold text-center text-red-600 dark:text-red-400 mb-2">3,500 kWh</p>
-          <p class="text-sm text-center text-gray-500 dark:text-gray-400">Monthly Cap</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 2: Monthly Trends -->
+  <!-- Section 2: Analyzing Averages -->
   <section
     class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100 dark:from-slate-900 dark:to-slate-800"
   >
     <div class="container mx-auto px-6 py-20">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Monthly Trends</h2>
+        <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Analyzing Averages</h2>
         <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          Track consumption patterns over the past 12 months with interactive controls
+          And why they don't tell the full picture
         </p>
       </div>
 
-      <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl max-w-7xl mx-auto">
-        <div class="mb-8">
-          <div class="flex flex-wrap gap-4 justify-center mb-6">
-            <button
-              class="chart-toggle px-6 py-3 rounded-full bg-blue-600 text-white font-semibold transition-all duration-300 hover:bg-blue-700 active"
-              data-chart="consumption"
-            >
-              Consumption
-            </button>
-            <button
-              class="chart-toggle px-6 py-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-semibold transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600"
-              data-chart="cost"
-            >
-              Cost Analysis
-            </button>
-            <button
-              class="chart-toggle px-6 py-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-semibold transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600"
-              data-chart="efficiency"
-            >
-              Efficiency
-            </button>
-          </div>
-        </div>
+      <!-- Analysis Content -->
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl">
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Left Side: The Problem with Averages -->
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">The Problem with Averages</h3>
 
-        <div class="relative h-96">
-          <canvas id="monthlyChart" class="w-full h-full"></canvas>
-        </div>
+              <div class="space-y-6">
+                <div class="bg-red-50 dark:bg-red-900/20 rounded-xl p-6 border-l-4 border-red-500">
+                  <h4 class="font-semibold text-red-800 dark:text-red-300 mb-2">Hidden Peaks</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">
+                    Average consumption masks critical peak usage periods that can overload transformers and cause
+                    outages.
+                  </p>
+                </div>
 
-        <div class="mt-8 grid md:grid-cols-3 gap-6">
-          <div class="text-center">
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">Peak Month</p>
-            <p class="text-2xl font-bold text-gray-900 dark:text-white">December 2023</p>
-            <p class="text-lg text-red-600 dark:text-red-400">3,245 kWh</p>
+                <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-6 border-l-4 border-yellow-500">
+                  <h4 class="font-semibold text-yellow-800 dark:text-yellow-300 mb-2">Uneven Distribution</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">
+                    Averages don't reveal which transformers are consistently overloaded while others remain
+                    underutilized.
+                  </p>
+                </div>
+
+                <div class="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 border-l-4 border-orange-500">
+                  <h4 class="font-semibold text-orange-800 dark:text-orange-300 mb-2">Time-Based Patterns</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">
+                    Daily and seasonal variations are lost when data is averaged, hiding critical usage patterns.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Visual Example -->
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Real Example</h3>
+
+              <div
+                class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-6"
+              >
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">{moorside.name} (Transformer 26730028)</h4>
+
+                <div class="space-y-4">
+                  <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Daily Average:</span>
+                    <span class="text-lg font-bold text-blue-600 dark:text-blue-400">
+                      {
+                        (
+                          (moorside.currentUsage.max.Night +
+                            moorside.currentUsage.max.Morning +
+                            moorside.currentUsage.max.Afternoon +
+                            moorside.currentUsage.max.Evening) /
+                          4
+                        ).toFixed(1)
+                      } kWh
+                    </span>
+                  </div>
+
+                  <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Peak Usage:</span>
+                    <span class="text-lg font-bold text-red-600 dark:text-red-400"
+                      >{moorside.currentUsage.max.Evening} kWh</span
+                    >
+                  </div>
+
+                  <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                    <div
+                      class="bg-gradient-to-r from-blue-500 to-red-500 h-3 rounded-full"
+                      style={`width: ${(moorside.currentUsage.max.Evening / moorside.currentUsage.max.Evening) * 100}%`}
+                    >
+                    </div>
+                  </div>
+
+                  <p class="text-xs text-gray-500 dark:text-gray-400 text-center">
+                    Peak is {
+                      (
+                        (moorside.currentUsage.max.Evening /
+                          ((moorside.currentUsage.max.Night +
+                            moorside.currentUsage.max.Morning +
+                            moorside.currentUsage.max.Afternoon +
+                            moorside.currentUsage.max.Evening) /
+                            4) -
+                          1) *
+                        100
+                      ).toFixed(0)
+                    }% higher than daily average
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="mt-6 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6"
+              >
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">The Impact</h4>
+                <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                  <li class="flex items-center">
+                    <Icon name="bx:check" class="text-green-500 mr-2" />
+                    System appears stable at average levels
+                  </li>
+                  <li class="flex items-center">
+                    <Icon name="bx:x" class="text-red-500 mr-2" />
+                    Peak loads cause transformer stress
+                  </li>
+                  <li class="flex items-center">
+                    <Icon name="bx:x" class="text-red-500 mr-2" />
+                    Risk of equipment failure during peak times
+                  </li>
+                  <li class="flex items-center">
+                    <Icon name="bx:x" class="text-red-500 mr-2" />
+                    Potential power outages for residents
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div class="text-center">
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">Lowest Month</p>
-            <p class="text-2xl font-bold text-gray-900 dark:text-white">May 2024</p>
-            <p class="text-lg text-green-600 dark:text-green-400">2,156 kWh</p>
+
+          <!-- Charts: Real Usage Averages per Transformer -->
+          <div class="mt-12">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+              Transformer Averages by Time Chunk
+            </h3>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+                <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">Transformer 26730028</h4>
+                <div class="relative h-64 md:h-80">
+                  <canvas id="chart26730028"></canvas>
+                </div>
+              </div>
+              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+                <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">Transformer 26730039</h4>
+                <div class="relative h-64 md:h-80">
+                  <canvas id="chart26730039"></canvas>
+                </div>
+              </div>
+              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+                <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">Transformer 26730050</h4>
+                <div class="relative h-64 md:h-80">
+                  <canvas id="chart26730050"></canvas>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="text-center">
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">Average</p>
-            <p class="text-2xl font-bold text-gray-900 dark:text-white">2,678 kWh</p>
-            <p class="text-lg text-blue-600 dark:text-blue-400">Monthly</p>
+
+          <!-- Bottom Section: Key Takeaway -->
+          <div
+            class="mt-12 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-8"
+          >
+            <div class="text-center">
+              <Icon name="bx:bxs-bulb" class="text-4xl text-yellow-500 mx-auto mb-4" />
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Key Takeaway</h3>
+              <p class="text-lg text-gray-700 dark:text-gray-300 max-w-4xl mx-auto">
+                While average consumption data provides a baseline understanding, it's the <strong
+                  >peak usage patterns</strong
+                > and <strong>uneven distribution</strong> that reveal the real challenges and opportunities for optimization
+                in our electrical infrastructure.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -124,71 +332,9 @@ import { Icon } from "astro-icon/components";
         </p>
       </div>
 
-      <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl max-w-7xl mx-auto">
-        <div class="mb-8">
-          <div class="flex flex-wrap gap-4 justify-center mb-6">
-            <button
-              class="unit-toggle px-6 py-3 rounded-full bg-purple-600 text-white font-semibold transition-all duration-300 hover:bg-purple-700 active"
-              data-unit="all"
-            >
-              All Units
-            </button>
-            <button
-              class="unit-toggle px-6 py-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-semibold transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600"
-              data-unit="high"
-            >
-              High Usage
-            </button>
-            <button
-              class="unit-toggle px-6 py-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-semibold transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600"
-              data-unit="efficient"
-            >
-              Most Efficient
-            </button>
-          </div>
-        </div>
-
-        <div class="relative h-96">
-          <canvas id="unitChart" class="w-full h-full"></canvas>
-        </div>
-
-        <div class="mt-8 grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Top Consumers</h3>
-            <div class="space-y-3">
-              <div class="flex justify-between items-center p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                <span class="font-semibold text-gray-900 dark:text-white">Unit 204</span>
-                <span class="text-red-600 dark:text-red-400 font-bold">3,245 kWh</span>
-              </div>
-              <div class="flex justify-between items-center p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-                <span class="font-semibold text-gray-900 dark:text-white">Unit 102</span>
-                <span class="text-orange-600 dark:text-orange-400 font-bold">3,156 kWh</span>
-              </div>
-              <div class="flex justify-between items-center p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
-                <span class="font-semibold text-gray-900 dark:text-white">Unit 301</span>
-                <span class="text-yellow-600 dark:text-yellow-400 font-bold">3,089 kWh</span>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Most Efficient</h3>
-            <div class="space-y-3">
-              <div class="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                <span class="font-semibold text-gray-900 dark:text-white">Unit 103</span>
-                <span class="text-green-600 dark:text-green-400 font-bold">2,156 kWh</span>
-              </div>
-              <div class="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                <span class="font-semibold text-gray-900 dark:text-white">Unit 205</span>
-                <span class="text-green-600 dark:text-green-400 font-bold">2,234 kWh</span>
-              </div>
-              <div class="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                <span class="font-semibold text-gray-900 dark:text-white">Unit 401</span>
-                <span class="text-green-600 dark:text-green-400 font-bold">2,267 kWh</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- Unit analysis content will be added here -->
+      <div class="text-center">
+        <p class="text-lg text-gray-500 dark:text-gray-400">Loading unit data...</p>
       </div>
     </div>
   </section>
@@ -293,296 +439,138 @@ import { Icon } from "astro-icon/components";
 <script>
   import Chart from "chart.js/auto";
 
-  // Sample data for charts
-  const monthlyData = {
-    consumption: {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      datasets: [
-        {
-          label: "Consumption (kWh)",
-          data: [2850, 2750, 2650, 2550, 2156, 2200, 2400, 2500, 2300, 2800, 3000, 3245],
-          borderColor: "rgb(59, 130, 246)",
-          backgroundColor: "rgba(59, 130, 246, 0.1)",
-          borderWidth: 3,
-          fill: true,
-          tension: 0.4,
-        },
-        {
-          label: "Max Limit",
-          data: [3500, 3500, 3500, 3500, 3500, 3500, 3500, 3500, 3500, 3500, 3500, 3500],
-          borderColor: "rgb(239, 68, 68)",
-          backgroundColor: "rgba(239, 68, 68, 0.1)",
-          borderWidth: 2,
-          borderDash: [5, 5],
-          fill: false,
-        },
-      ],
-    },
-    cost: {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      datasets: [
-        {
-          label: "Cost ($)",
-          data: [456, 440, 424, 408, 345, 352, 384, 400, 368, 448, 480, 519],
-          borderColor: "rgb(16, 185, 129)",
-          backgroundColor: "rgba(16, 185, 129, 0.1)",
-          borderWidth: 3,
-          fill: true,
-          tension: 0.4,
-        },
-      ],
-    },
-    efficiency: {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      datasets: [
-        {
-          label: "Efficiency (%)",
-          data: [81, 79, 76, 73, 62, 63, 69, 71, 66, 80, 86, 93],
-          borderColor: "rgb(168, 85, 247)",
-          backgroundColor: "rgba(168, 85, 247, 0.1)",
-          borderWidth: 3,
-          fill: true,
-          tension: 0.4,
-        },
-      ],
+  // Aggregated averages provided by user: { [TimeChunk]: { [TransformerID]: value } }
+  const aggregatedAverages = {
+    "Night (12 AM - 6 AM)": { "26730028": 6.78653, "26730039": 4.10668, "26730050": 5.46378 },
+    "Morning (6 AM - 12 PM)": { "26730028": 9.654, "26730039": 6.24147, "26730050": 7.38963 },
+    "Afternoon (12 PM - 6 PM)": { "26730028": 11.9943, "26730039": 7.83361, "26730050": 9.6967 },
+    "Evening (6 PM - 12 AM)": { "26730028": 13.0385, "26730039": 7.8205, "26730050": 9.06881 },
+  } as const;
+
+  const chunkLabels = [
+    "Night (12 AM - 6 AM)",
+    "Morning (6 AM - 12 PM)",
+    "Afternoon (12 PM - 6 PM)",
+    "Evening (6 PM - 12 AM)",
+  ];
+
+  const colorMap = {
+    "26730028": { bg: "rgba(239, 68, 68, 0.8)", border: "rgb(239, 68, 68)" },
+    "26730039": { bg: "rgba(245, 158, 11, 0.8)", border: "rgb(245, 158, 11)" },
+    "26730050": { bg: "rgba(249, 115, 22, 0.8)", border: "rgb(249, 115, 22)" },
+  } as const;
+
+  const transformerData = {
+    averages: {
+      "26730028": {
+        labels: chunkLabels,
+        datasets: [
+          {
+            label: "Average Usage (kWh)",
+            data: chunkLabels.map((l) => aggregatedAverages[l]["26730028"]),
+            backgroundColor: colorMap["26730028"].bg,
+            borderColor: colorMap["26730028"].border,
+            borderWidth: 2,
+          },
+        ],
+      },
+      "26730039": {
+        labels: chunkLabels,
+        datasets: [
+          {
+            label: "Average Usage (kWh)",
+            data: chunkLabels.map((l) => aggregatedAverages[l]["26730039"]),
+            backgroundColor: colorMap["26730039"].bg,
+            borderColor: colorMap["26730039"].border,
+            borderWidth: 2,
+          },
+        ],
+      },
+      "26730050": {
+        labels: chunkLabels,
+        datasets: [
+          {
+            label: "Average Usage (kWh)",
+            data: chunkLabels.map((l) => aggregatedAverages[l]["26730050"]),
+            backgroundColor: colorMap["26730050"].bg,
+            borderColor: colorMap["26730050"].border,
+            borderWidth: 2,
+          },
+        ],
+      },
     },
   };
 
-  const unitData = {
-    all: {
-      labels: [
-        "101",
-        "102",
-        "103",
-        "104",
-        "201",
-        "202",
-        "203",
-        "204",
-        "301",
-        "302",
-        "303",
-        "304",
-        "401",
-        "402",
-        "403",
-        "404",
-      ],
-      datasets: [
-        {
-          label: "Consumption (kWh)",
-          data: [2456, 3156, 2156, 2678, 2890, 2456, 2789, 3245, 3089, 2567, 2345, 2789, 2267, 2456, 2567, 2345],
-          backgroundColor: [
-            "rgba(59, 130, 246, 0.8)",
-            "rgba(239, 68, 68, 0.8)",
-            "rgba(16, 185, 129, 0.8)",
-            "rgba(245, 158, 11, 0.8)",
-            "rgba(139, 92, 246, 0.8)",
-            "rgba(59, 130, 246, 0.8)",
-            "rgba(236, 72, 153, 0.8)",
-            "rgba(239, 68, 68, 0.8)",
-            "rgba(239, 68, 68, 0.8)",
-            "rgba(59, 130, 246, 0.8)",
-            "rgba(16, 185, 129, 0.8)",
-            "rgba(236, 72, 153, 0.8)",
-            "rgba(16, 185, 129, 0.8)",
-            "rgba(59, 130, 246, 0.8)",
-            "rgba(59, 130, 246, 0.8)",
-            "rgba(16, 185, 129, 0.8)",
-          ],
-          borderColor: [
-            "rgb(59, 130, 246)",
-            "rgb(239, 68, 68)",
-            "rgb(16, 185, 129)",
-            "rgb(245, 158, 11)",
-            "rgb(139, 92, 246)",
-            "rgb(59, 130, 246)",
-            "rgb(236, 72, 153)",
-            "rgb(239, 68, 68)",
-            "rgb(239, 68, 68)",
-            "rgb(59, 130, 246)",
-            "rgb(16, 185, 129)",
-            "rgb(236, 72, 153)",
-            "rgb(16, 185, 129)",
-            "rgb(59, 130, 246)",
-            "rgb(59, 130, 246)",
-            "rgb(16, 185, 129)",
-          ],
-          borderWidth: 2,
-        },
-      ],
-    },
-    high: {
-      labels: ["204", "102", "301", "201", "104"],
-      datasets: [
-        {
-          label: "High Usage Units (kWh)",
-          data: [3245, 3156, 3089, 2890, 2678],
-          backgroundColor: [
-            "rgba(239, 68, 68, 0.8)",
-            "rgba(245, 158, 11, 0.8)",
-            "rgba(245, 158, 11, 0.8)",
-            "rgba(245, 158, 11, 0.8)",
-            "rgba(59, 130, 246, 0.8)",
-          ],
-          borderColor: [
-            "rgb(239, 68, 68)",
-            "rgb(245, 158, 11)",
-            "rgb(245, 158, 11)",
-            "rgb(245, 158, 11)",
-            "rgb(59, 130, 246)",
-          ],
-          borderWidth: 2,
-        },
-      ],
-    },
-    efficient: {
-      labels: ["103", "205", "401", "303", "404"],
-      datasets: [
-        {
-          label: "Most Efficient Units (kWh)",
-          data: [2156, 2234, 2267, 2345, 2345],
-          backgroundColor: [
-            "rgba(16, 185, 129, 0.8)",
-            "rgba(16, 185, 129, 0.8)",
-            "rgba(16, 185, 129, 0.8)",
-            "rgba(16, 185, 129, 0.8)",
-            "rgba(16, 185, 129, 0.8)",
-          ],
-          borderColor: [
-            "rgb(16, 185, 129)",
-            "rgb(16, 185, 129)",
-            "rgb(16, 185, 129)",
-            "rgb(16, 185, 129)",
-            "rgb(16, 185, 129)",
-          ],
-          borderWidth: 2,
-        },
-      ],
-    },
-  };
-
-  // Initialize charts
-  let monthlyChart, unitChart;
+  // Initialize transformer charts
+  let transformerCharts = {};
 
   function initCharts() {
-    // Monthly Chart
-    const monthlyCtx = document.getElementById("monthlyChart") as HTMLCanvasElement;
-    if (monthlyCtx) {
-      monthlyChart = new Chart(monthlyCtx, {
-        type: "line",
-        data: monthlyData.consumption,
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              labels: {
-                color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
-              },
-            },
-          },
-          scales: {
-            x: {
-              ticks: {
-                color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
-              },
-              grid: {
-                color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
-              },
-            },
-            y: {
-              ticks: {
-                color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
-              },
-              grid: {
-                color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
-              },
-            },
-          },
-        },
-      });
-    }
+    const transformerIds = ["26730028", "26730039", "26730050"];
 
-    // Unit Chart
-    const unitCtx = document.getElementById("unitChart") as HTMLCanvasElement;
-    if (unitCtx) {
-      unitChart = new Chart(unitCtx, {
-        type: "bar",
-        data: unitData.all,
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              labels: {
-                color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
+    transformerIds.forEach((id) => {
+      const ctx = document.getElementById(`chart${id}`) as HTMLCanvasElement;
+      if (ctx) {
+        transformerCharts[id] = new Chart(ctx, {
+          type: "bar",
+          data: transformerData.averages[id],
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false,
+              },
+            },
+            scales: {
+              x: {
+                ticks: {
+                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
+                  maxRotation: 45,
+                },
+                grid: {
+                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
+                },
+              },
+              y: {
+                ticks: {
+                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
+                },
+                grid: {
+                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
+                },
+                beginAtZero: true,
               },
             },
           },
-          scales: {
-            x: {
-              ticks: {
-                color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
-              },
-              grid: {
-                color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
-              },
-            },
-            y: {
-              ticks: {
-                color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
-              },
-              grid: {
-                color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
-              },
-            },
-          },
-        },
-      });
-    }
+        });
+      }
+    });
   }
 
-  // Chart toggle functionality
+  // Data toggle functionality
   function setupChartToggles() {
-    const chartToggles = document.querySelectorAll(".chart-toggle");
-    chartToggles.forEach((toggle) => {
+    const dataToggles = document.querySelectorAll(".data-toggle");
+    dataToggles.forEach((toggle) => {
       toggle.addEventListener("click", () => {
         // Update button states
-        chartToggles.forEach((t) => {
-          t.classList.remove("active", "bg-blue-600", "text-white");
-          t.classList.add("bg-gray-200", "dark:bg-gray-700", "text-gray-700", "dark:text-gray-300");
+        dataToggles.forEach((t) => {
+          t.classList.remove("active", "bg-green-600", "text-white");
+          t.classList.add("bg-gray-200", "dark:bg-gray-600", "text-gray-700", "dark:text-gray-300");
         });
 
-        toggle.classList.add("active", "bg-blue-600", "text-white");
-        toggle.classList.remove("bg-gray-200", "dark:bg-gray-700", "text-gray-700", "dark:text-gray-300");
+        toggle.classList.add("active", "bg-green-600", "text-white");
+        toggle.classList.remove("bg-gray-200", "dark:bg-gray-600", "text-gray-700", "dark:text-gray-300");
 
-        // Update chart data
-        const chartType = (toggle as HTMLElement).dataset.chart;
-        if (monthlyChart && chartType && monthlyData[chartType as keyof typeof monthlyData]) {
-          monthlyChart.data = monthlyData[chartType as keyof typeof monthlyData];
-          monthlyChart.update();
-        }
-      });
-    });
-
-    const unitToggles = document.querySelectorAll(".unit-toggle");
-    unitToggles.forEach((toggle) => {
-      toggle.addEventListener("click", () => {
-        // Update button states
-        unitToggles.forEach((t) => {
-          t.classList.remove("active", "bg-purple-600", "text-white");
-          t.classList.add("bg-gray-200", "dark:bg-gray-700", "text-gray-700", "dark:text-gray-300");
-        });
-
-        toggle.classList.add("active", "bg-purple-600", "text-white");
-        toggle.classList.remove("bg-gray-200", "dark:bg-gray-700", "text-gray-700", "dark:text-gray-300");
-
-        // Update chart data
-        const unitType = (toggle as HTMLElement).dataset.unit;
-        if (unitChart && unitType && unitData[unitType as keyof typeof unitData]) {
-          unitChart.data = unitData[unitType as keyof typeof unitData];
-          unitChart.update();
+        // Update all transformer charts
+        const dataType = (toggle as HTMLElement).dataset.type;
+        if (dataType && transformerData[dataType as keyof typeof transformerData]) {
+          Object.keys(transformerCharts).forEach((transformerId) => {
+            if (transformerCharts[transformerId]) {
+              transformerCharts[transformerId].data =
+                transformerData[dataType as keyof typeof transformerData][transformerId];
+              transformerCharts[transformerId].update();
+            }
+          });
         }
       });
     });
@@ -596,12 +584,8 @@ import { Icon } from "astro-icon/components";
 </script>
 
 <style>
-  .chart-toggle.active {
-    @apply bg-blue-600 text-white;
-  }
-
-  .unit-toggle.active {
-    @apply bg-purple-600 text-white;
+  .data-toggle.active {
+    @apply bg-green-600 text-white;
   }
 
   /* Smooth scrolling for full-screen sections */
