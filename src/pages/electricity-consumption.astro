@@ -146,14 +146,25 @@ const braemoor = electricityConsumptionData["26730039"];
 
   <!-- Section 2: Analyzing Averages -->
   <section
-    class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100 dark:from-slate-900 dark:to-slate-800"
+    class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-10 dark:from-slate-900 dark:to-slate-800"
   >
     <div class="container mx-auto px-6 py-20">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Analyzing Averages</h2>
+        <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Data Analysis Method</h2>
         <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          And why they don't tell the full picture
+          Why peak analysis provides better insights than averages alone
         </p>
+      </div>
+
+      <!-- Our Analysis Method -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl text-center">
+          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-4xl mx-auto mb-6">
+            This report focuses on <strong>peak usage patterns</strong> and <strong>capacity utilization</strong> rather
+            than just averages. Peak loads determine infrastructure requirements and reveal potential bottlenecks that averages
+            can mask.
+          </p>
+        </div>
       </div>
 
       <!-- Analysis Content -->
@@ -299,139 +310,27 @@ const braemoor = electricityConsumptionData["26730039"];
               </div>
             </div>
           </div>
-
-          <!-- Bottom Section: Key Takeaway -->
-          <div
-            class="mt-12 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-8"
-          >
-            <div class="text-center">
-              <Icon name="bx:bxs-bulb" class="text-4xl text-yellow-500 mx-auto mb-4" />
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Key Takeaway</h3>
-              <p class="text-lg text-gray-700 dark:text-gray-300 max-w-4xl mx-auto">
-                While average consumption data provides a baseline understanding, it's the <strong
-                  >peak usage patterns</strong
-                > and <strong>uneven distribution</strong> that reveal the real challenges and opportunities for optimization
-                in our electrical infrastructure.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Section 3: Unit Breakdown -->
-  <section
-    class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-purple-50 to-pink-100 dark:from-slate-800 dark:to-slate-900"
-  >
-    <div class="container mx-auto px-6 py-20">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Unit Breakdown</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          Individual unit consumption analysis with comparative insights
-        </p>
-      </div>
-
-      <!-- Unit analysis content will be added here -->
-      <div class="text-center">
-        <p class="text-lg text-gray-500 dark:text-gray-400">Loading unit data...</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 4: Recommendations -->
-  <section
-    class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-orange-50 to-red-100 dark:from-slate-900 dark:to-slate-800"
-  >
-    <div class="container mx-auto px-6 py-20">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Energy Efficiency</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          Actionable recommendations to optimize energy consumption and reduce costs
-        </p>
-      </div>
-
-      <div class="max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-8 mb-12">
-          <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg">
-            <div class="flex items-center mb-6">
-              <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-4">
-                <Icon name="bx:bxs-bulb" class="text-2xl text-blue-600 dark:text-blue-400" />
-              </div>
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white">LED Upgrades</h3>
-            </div>
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Replace traditional bulbs with LED lighting to reduce energy consumption by up to 80%.
-            </p>
-            <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
-              <p class="text-green-700 dark:text-green-400 font-semibold">
-                Potential Savings: 15-20% reduction in lighting costs
-              </p>
-            </div>
-          </div>
-
-          <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg">
-            <div class="flex items-center mb-6">
-              <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-4">
-                <Icon name="bx:bxs-thermometer" class="text-2xl text-green-600 dark:text-green-400" />
-              </div>
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Smart Thermostats</h3>
-            </div>
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Install programmable thermostats to optimize heating and cooling schedules.
-            </p>
-            <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
-              <p class="text-green-700 dark:text-green-400 font-semibold">
-                Potential Savings: 10-15% reduction in HVAC costs
-              </p>
-            </div>
-          </div>
-
-          <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg">
-            <div class="flex items-center mb-6">
-              <div
-                class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mr-4"
-              >
-                <Icon name="bx:bxs-shield" class="text-2xl text-purple-600 dark:text-purple-400" />
-              </div>
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Insulation</h3>
-            </div>
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Improve building insulation to reduce heat loss and energy waste.
-            </p>
-            <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
-              <p class="text-green-700 dark:text-green-400 font-semibold">
-                Potential Savings: 20-25% reduction in heating costs
-              </p>
-            </div>
-          </div>
-
-          <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg">
-            <div class="flex items-center mb-6">
-              <div
-                class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mr-4"
-              >
-                <Icon name="bx:bxs-sun" class="text-2xl text-yellow-600 dark:text-yellow-400" />
-              </div>
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Solar Panels</h3>
-            </div>
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Consider solar panel installation for renewable energy generation.
-            </p>
-            <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
-              <p class="text-green-700 dark:text-green-400 font-semibold">
-                Potential Savings: 30-50% reduction in total energy costs
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg text-center">
-          <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Total Potential Savings</h3>
-          <p class="text-5xl font-bold text-green-600 dark:text-green-400 mb-2">$2,400 - $3,200</p>
-          <p class="text-xl text-gray-600 dark:text-gray-300">Annual savings with recommended improvements</p>
-        </div>
-      </div>
+  <section>
+    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 mt-6">
+      <Icon name="bx:bxs-data" class="text-3xl text-blue-600 dark:text-blue-400 mx-auto mb-3" />
+      <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Verify Our Analysis</h4>
+      <p class="text-gray-700 dark:text-gray-300 mb-4">
+        Don't trust our insights? Analyze the data yourself! We believe in transparency and encourage independent
+        verification.
+      </p>
+      <a
+        href="/raw-data-download-link"
+        class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="bx:download" class="mr-2" />
+        Download Raw Data (CSV)
+      </a>
     </div>
   </section>
 </Layout>
