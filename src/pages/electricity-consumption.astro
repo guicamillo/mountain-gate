@@ -569,6 +569,7 @@ const braemoor = electricityConsumptionData["26730039"];
 
 <script>
   import Chart from "chart.js/auto";
+  import { electricityConsumptionData } from "./electricity-consumption-data.ts";
 
   // Aggregated averages provided by user: { [TimeChunk]: { [TransformerID]: value } }
   const aggregatedAverages = {
@@ -664,9 +665,37 @@ const braemoor = electricityConsumptionData["26730039"];
     transformerIds.forEach((id) => {
       const ctx = document.getElementById(`chart${id}`) as HTMLCanvasElement;
       if (ctx) {
+        const maxCapacityForTransformer = parseInt(electricityConsumptionData[id].maxRating);
+
         transformerCharts[id] = new Chart(ctx, {
           type: "bar",
           data: transformerData.averages[id],
+          plugins: [
+            {
+              id: "maxCapacityLine",
+              afterDraw: function (chart) {
+                const ctx = chart.ctx;
+                const yAxis = chart.scales.y;
+                const yPosition = yAxis.getPixelForValue(maxCapacityForTransformer);
+
+                ctx.save();
+                ctx.strokeStyle = "rgba(239, 68, 68, 0.9)";
+                ctx.lineWidth = 3;
+                ctx.setLineDash([10, 5]);
+                ctx.beginPath();
+                ctx.moveTo(chart.chartArea.left, yPosition);
+                ctx.lineTo(chart.chartArea.right, yPosition);
+                ctx.stroke();
+
+                // Add label
+                ctx.fillStyle = "rgba(239, 68, 68, 0.9)";
+                ctx.font = "12px Arial";
+                ctx.fillText(`${maxCapacityForTransformer} kVA`, chart.chartArea.left + 10, yPosition - 5);
+
+                ctx.restore();
+              },
+            },
+          ],
           options: {
             responsive: true,
             maintainAspectRatio: false,
@@ -686,6 +715,7 @@ const braemoor = electricityConsumptionData["26730039"];
                 },
               },
               y: {
+                max: maxCapacityForTransformer + 10, // Add headroom above max capacity
                 ticks: {
                   color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
                 },
@@ -733,6 +763,32 @@ const braemoor = electricityConsumptionData["26730039"];
               },
             ],
           },
+          plugins: [
+            {
+              id: "maxCapacityLine",
+              afterDraw: function (chart) {
+                const ctx = chart.ctx;
+                const yAxis = chart.scales.y;
+                const yPosition = yAxis.getPixelForValue(maxCapacity);
+
+                ctx.save();
+                ctx.strokeStyle = "rgba(239, 68, 68, 0.9)";
+                ctx.lineWidth = 3;
+                ctx.setLineDash([10, 5]);
+                ctx.beginPath();
+                ctx.moveTo(chart.chartArea.left, yPosition);
+                ctx.lineTo(chart.chartArea.right, yPosition);
+                ctx.stroke();
+
+                // Add label
+                ctx.fillStyle = "rgba(239, 68, 68, 0.9)";
+                ctx.font = "12px Arial";
+                ctx.fillText(`${maxCapacity} kVA`, chart.chartArea.left + 10, yPosition - 5);
+
+                ctx.restore();
+              },
+            },
+          ],
           options: {
             responsive: true,
             maintainAspectRatio: false,
@@ -762,30 +818,6 @@ const braemoor = electricityConsumptionData["26730039"];
                   color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
                 },
                 beginAtZero: true,
-              },
-            },
-            // Add annotation for max capacity line
-            plugins: {
-              afterDraw: function (chart) {
-                const ctx = chart.ctx;
-                const yAxis = chart.scales.y;
-                const yPosition = yAxis.getPixelForValue(maxCapacity);
-
-                ctx.save();
-                ctx.strokeStyle = "rgba(239, 68, 68, 0.9)";
-                ctx.lineWidth = 3;
-                ctx.setLineDash([10, 5]);
-                ctx.beginPath();
-                ctx.moveTo(chart.chartArea.left, yPosition);
-                ctx.lineTo(chart.chartArea.right, yPosition);
-                ctx.stroke();
-
-                // Add label
-                ctx.fillStyle = "rgba(239, 68, 68, 0.9)";
-                ctx.font = "12px Arial";
-                ctx.fillText(`Max Capacity: ${maxCapacity} kVA`, chart.chartArea.left + 10, yPosition - 5);
-
-                ctx.restore();
               },
             },
           },
