@@ -287,7 +287,7 @@ const braemoor = electricityConsumptionData["26730039"];
           <!-- Charts: Real Usage Averages per Transformer -->
           <div class="mt-12">
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-              Transformer Averages by Time Chunk
+              Current Transformer usage by Time Chunk: Average and Peak
             </h3>
             <div class="grid md:grid-cols-3 gap-8">
               <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
@@ -306,6 +306,31 @@ const braemoor = electricityConsumptionData["26730039"];
                 <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">Transformer 26730050</h4>
                 <div class="relative h-64 md:h-80">
                   <canvas id="chart26730050"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chart Legend -->
+            <div class="mt-8">
+              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow w-full">
+                <div class="flex flex-wrap items-center gap-6">
+                  <span class="font-semibold text-gray-900 dark:text-white">Chart Legend:</span>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 bg-blue-500 rounded mr-2"></div>
+                    <span class="text-sm text-gray-700 dark:text-gray-300">Average Usage</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 bg-red-500 rounded mr-2"></div>
+                    <span class="text-sm text-gray-700 dark:text-gray-300">Peak Usage</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div
+                      class="w-4 h-1 bg-red-500 rounded mr-2"
+                      style="border: 2px dashed rgba(239, 68, 68, 0.9); background: none;"
+                    >
+                    </div>
+                    <span class="text-sm text-gray-700 dark:text-gray-300">Max Capacity</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -622,8 +647,20 @@ const braemoor = electricityConsumptionData["26730039"];
           {
             label: "Average Usage (kWh)",
             data: chunkLabels.map((l) => aggregatedAverages[l]["26730028"]),
-            backgroundColor: colorMap["26730028"].bg,
-            borderColor: colorMap["26730028"].border,
+            backgroundColor: "rgba(59, 130, 246, 0.8)",
+            borderColor: "rgb(59, 130, 246)",
+            borderWidth: 2,
+          },
+          {
+            label: "Peak Usage (kWh)",
+            data: [
+              electricityConsumptionData["26730028"].currentUsage.max.Night,
+              electricityConsumptionData["26730028"].currentUsage.max.Morning,
+              electricityConsumptionData["26730028"].currentUsage.max.Afternoon,
+              electricityConsumptionData["26730028"].currentUsage.max.Evening,
+            ],
+            backgroundColor: "rgba(239, 68, 68, 0.8)",
+            borderColor: "rgb(239, 68, 68)",
             borderWidth: 2,
           },
         ],
@@ -634,8 +671,20 @@ const braemoor = electricityConsumptionData["26730039"];
           {
             label: "Average Usage (kWh)",
             data: chunkLabels.map((l) => aggregatedAverages[l]["26730039"]),
-            backgroundColor: colorMap["26730039"].bg,
-            borderColor: colorMap["26730039"].border,
+            backgroundColor: "rgba(59, 130, 246, 0.8)",
+            borderColor: "rgb(59, 130, 246)",
+            borderWidth: 2,
+          },
+          {
+            label: "Peak Usage (kWh)",
+            data: [
+              electricityConsumptionData["26730039"].currentUsage.max.Night,
+              electricityConsumptionData["26730039"].currentUsage.max.Morning,
+              electricityConsumptionData["26730039"].currentUsage.max.Afternoon,
+              electricityConsumptionData["26730039"].currentUsage.max.Evening,
+            ],
+            backgroundColor: "rgba(239, 68, 68, 0.8)",
+            borderColor: "rgb(239, 68, 68)",
             borderWidth: 2,
           },
         ],
@@ -646,8 +695,20 @@ const braemoor = electricityConsumptionData["26730039"];
           {
             label: "Average Usage (kWh)",
             data: chunkLabels.map((l) => aggregatedAverages[l]["26730050"]),
-            backgroundColor: colorMap["26730050"].bg,
-            borderColor: colorMap["26730050"].border,
+            backgroundColor: "rgba(59, 130, 246, 0.8)",
+            borderColor: "rgb(59, 130, 246)",
+            borderWidth: 2,
+          },
+          {
+            label: "Peak Usage (kWh)",
+            data: [
+              electricityConsumptionData["26730050"].currentUsage.max.Night,
+              electricityConsumptionData["26730050"].currentUsage.max.Morning,
+              electricityConsumptionData["26730050"].currentUsage.max.Afternoon,
+              electricityConsumptionData["26730050"].currentUsage.max.Evening,
+            ],
+            backgroundColor: "rgba(239, 68, 68, 0.8)",
+            borderColor: "rgb(239, 68, 68)",
             borderWidth: 2,
           },
         ],
