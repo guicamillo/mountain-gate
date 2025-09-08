@@ -314,23 +314,255 @@ const braemoor = electricityConsumptionData["26730039"];
       </div>
     </div>
   </section>
-  <section>
-    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 mt-6">
-      <Icon name="bx:bxs-data" class="text-3xl text-blue-600 dark:text-blue-400 mx-auto mb-3" />
-      <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Verify Our Analysis</h4>
-      <p class="text-gray-700 dark:text-gray-300 mb-4">
-        Don't trust our insights? Analyze the data yourself! We believe in transparency and encourage independent
-        verification.
-      </p>
-      <a
-        href="/raw-data-download-link"
-        class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon name="bx:download" class="mr-2" />
-        Download Raw Data (CSV)
-      </a>
+
+  <!-- Section 3: Future Planning Context -->
+  <section
+    class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-purple-50 to-pink-100 dark:from-slate-800 dark:to-slate-900"
+  >
+    <div class="container mx-auto px-6 py-20">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Future Planning Context</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          Understanding the electrical demands of heat pumps and electric vehicles
+        </p>
+      </div>
+
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 mb-12">
+          <!-- Heat Pumps Section -->
+          <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl">
+            <div class="text-center mb-6">
+              <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="bx:bxs-thermometer" class="text-2xl text-white" />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Heat Pumps</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Efficiency with Added Load</p>
+            </div>
+
+            <div class="space-y-4">
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-green-800 dark:text-green-300 mb-2">High Efficiency</h4>
+                <p class="text-gray-700 dark:text-gray-300 text-sm">
+                  Heat pumps are highly efficient for heating and cooling in townhouses (~1,800–1,900 sqft).
+                </p>
+              </div>
+
+              <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-blue-800 dark:text-blue-300 mb-2">Load Impact</h4>
+                <p class="text-gray-700 dark:text-gray-300 text-sm">
+                  Assuming 50% of units adopt HPs, transformers can see an extra ~12–19.5 kW during peak hours.
+                </p>
+              </div>
+
+              <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-yellow-800 dark:text-yellow-300 mb-2">Peak Timing</h4>
+                <p class="text-gray-700 dark:text-gray-300 text-sm">
+                  HP load is mostly during Morning & Afternoon, which helps avoid stacking with EV peaks.
+                </p>
+              </div>
+
+              <div class="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-orange-800 dark:text-orange-300 mb-2">Planning Requirement</h4>
+                <p class="text-gray-700 dark:text-gray-300 text-sm">
+                  Even partial adoption significantly increases peak demand — careful planning is needed.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Electric Vehicles Section -->
+          <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl">
+            <div class="text-center mb-6">
+              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="bx:bxs-car" class="text-2xl text-white" />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Electric Vehicles</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Assumptions and Impact</p>
+            </div>
+
+            <div class="space-y-4">
+              <div class="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-purple-800 dark:text-purple-300 mb-2">BC EV Mandate</h4>
+                <p class="text-gray-700 dark:text-gray-300 text-sm">
+                  26% ZEV sales by 2026, 90% by 2030, 100% by 2035. By 2035, all new light-duty vehicles sold must be
+                  zero-emission vehicles (ZEVs).
+                </p>
+              </div>
+
+              <div class="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-indigo-800 dark:text-indigo-300 mb-2">Charging Infrastructure</h4>
+                <p class="text-gray-700 dark:text-gray-300 text-sm">
+                  11 homes (30% of 36 units) assumed to install Level 2 chargers (7.7 kW).
+                </p>
+              </div>
+
+              <div class="bg-teal-50 dark:bg-teal-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-teal-800 dark:text-teal-300 mb-2">Simultaneity Assumption</h4>
+                <p class="text-gray-700 dark:text-gray-300 text-sm">
+                  30% → only some EVs charge at the same time. EV charging occurs mostly evening/night, avoiding daytime
+                  HP peaks.
+                </p>
+              </div>
+
+              <div class="bg-cyan-50 dark:bg-cyan-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-cyan-800 dark:text-cyan-300 mb-2">Managed Charging</h4>
+                <p class="text-gray-700 dark:text-gray-300 text-sm">
+                  Throttling to 16 A reduces peak load from ~27.7 kW → 13.7 kW per transformer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Planning Insight -->
+        <div
+          class="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-3xl p-8 text-center"
+        >
+          <Icon name="bx:bxs-tree" class="text-4xl text-indigo-600 dark:text-indigo-400 mx-auto mb-4" />
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Why This Analysis Matters</h3>
+          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-4xl mx-auto">
+            Understanding current peak loads is essential for planning future electrical infrastructure. Heat pumps and
+            electric vehicles will significantly increase demand, and <strong>proper load management</strong>
+            will be critical to avoid transformer overloads and power outages.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Projected Load Analysis -->
+  <section
+    class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-orange-50 to-red-100 dark:from-slate-900 dark:to-slate-800"
+  >
+    <div class="container mx-auto px-6 py-20">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Projected Load Analysis</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          Future electrical demand with heat pumps and electric vehicle charging
+        </p>
+      </div>
+
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl">
+          <!-- Charts: Projected Load Breakdown per Transformer -->
+          <div class="mb-12">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+              Projected Load Breakdown by Time Chunk
+            </h3>
+            <p class="text-center text-gray-600 dark:text-gray-400 mb-8">
+              Current usage + Electric Vehicle charging + Heat Pump load
+            </p>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+                <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">
+                  {ridgemoor.name} (Critical)
+                </h4>
+                <div class="relative h-64 md:h-80">
+                  <canvas id="projectionChart26730050"></canvas>
+                </div>
+              </div>
+              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+                <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">{moorside.name} (Moderate)</h4>
+                <div class="relative h-64 md:h-80">
+                  <canvas id="projectionChart26730028"></canvas>
+                </div>
+              </div>
+              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+                <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">{braemoor.name} (Low Risk)</h4>
+                <div class="relative h-64 md:h-80">
+                  <canvas id="projectionChart26730039"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chart Legend -->
+            <div class="mt-8">
+              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow w-full">
+                <div class="flex flex-wrap items-center gap-6">
+                  <span class="font-semibold text-gray-900 dark:text-white">Chart Legend:</span>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 bg-blue-500 rounded mr-2"></div>
+                    <span class="text-sm text-gray-700 dark:text-gray-300">Current Load</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 bg-purple-500 rounded mr-2"></div>
+                    <span class="text-sm text-gray-700 dark:text-gray-300">EV Charging</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 bg-green-500 rounded mr-2"></div>
+                    <span class="text-sm text-gray-700 dark:text-gray-300">Heat Pumps</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div
+                      class="w-4 h-1 bg-red-500 rounded mr-2"
+                      style="border: 2px dashed rgba(239, 68, 68, 0.9); background: none;"
+                    >
+                    </div>
+                    <span class="text-sm text-gray-700 dark:text-gray-300">Max Capacity</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key Findings -->
+          <div
+            class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-8"
+          >
+            <div class="text-center">
+              <Icon name="bx:bxs-error" class="text-4xl text-red-600 dark:text-red-400 mx-auto mb-4" />
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Critical Infrastructure Findings</h3>
+              <div class="grid md:grid-cols-3 gap-6 text-left">
+                <div>
+                  <h4 class="font-semibold text-red-800 dark:text-red-300 mb-2">{ridgemoor.name} - Immediate Risk</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">
+                    Exceeds capacity in ALL time periods with future loads. Requires immediate infrastructure upgrades.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-orange-800 dark:text-orange-300 mb-2">
+                    {moorside.name} - Evening Risk
+                  </h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">
+                    Exceeds capacity during evening peak when EVs charge. Load management strategies needed.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-green-800 dark:text-green-300 mb-2">{braemoor.name} - Manageable</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">
+                    Stays within capacity limits across all time periods. Well-positioned for future growth.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Verification Section -->
+  <section class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800 py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl text-center">
+          <Icon name="bx:bxs-data" class="text-4xl text-blue-600 dark:text-blue-400 mx-auto mb-4" />
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Verify Our Analysis</h3>
+          <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">
+            Don't trust our insights? Analyze the data yourself! We believe in transparency and encourage independent
+            verification.
+          </p>
+          <a
+            href="/raw-data-download-link"
+            class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="bx:download" class="mr-2" />
+            Download Raw Data (CSV)
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
@@ -357,6 +589,28 @@ const braemoor = electricityConsumptionData["26730039"];
     "26730028": { bg: "rgba(239, 68, 68, 0.8)", border: "rgb(239, 68, 68)" },
     "26730039": { bg: "rgba(245, 158, 11, 0.8)", border: "rgb(245, 158, 11)" },
     "26730050": { bg: "rgba(249, 115, 22, 0.8)", border: "rgb(249, 115, 22)" },
+  } as const;
+
+  // Projection data from electricity-consumption-data.ts
+  const projectionData = {
+    "26730028": [
+      { timeChunk: "Night", current: 17.5, ev: 27.72, heatPump: 0, total: 45.22, maxRated: 50 },
+      { timeChunk: "Morning", current: 18.87, ev: 0, heatPump: 15, total: 33.87, maxRated: 50 },
+      { timeChunk: "Afternoon", current: 28.51, ev: 0, heatPump: 15, total: 43.51, maxRated: 50 },
+      { timeChunk: "Evening", current: 31, ev: 27.72, heatPump: 0, total: 58.72, maxRated: 50 },
+    ],
+    "26730050": [
+      { timeChunk: "Night", current: 12.84, ev: 27.72, heatPump: 0, total: 40.56, maxRated: 25 },
+      { timeChunk: "Morning", current: 16.71, ev: 0, heatPump: 15, total: 31.71, maxRated: 25 },
+      { timeChunk: "Afternoon", current: 22.75, ev: 0, heatPump: 15, total: 37.75, maxRated: 25 },
+      { timeChunk: "Evening", current: 22.52, ev: 27.72, heatPump: 0, total: 50.24, maxRated: 25 },
+    ],
+    "26730039": [
+      { timeChunk: "Night", current: 10.21, ev: 27.72, heatPump: 0, total: 37.93, maxRated: 50 },
+      { timeChunk: "Morning", current: 15.22, ev: 0, heatPump: 15, total: 30.22, maxRated: 50 },
+      { timeChunk: "Afternoon", current: 18.32, ev: 0, heatPump: 15, total: 33.32, maxRated: 50 },
+      { timeChunk: "Evening", current: 18.18, ev: 27.72, heatPump: 0, total: 45.9, maxRated: 50 },
+    ],
   } as const;
 
   const transformerData = {
@@ -402,6 +656,7 @@ const braemoor = electricityConsumptionData["26730039"];
 
   // Initialize transformer charts
   let transformerCharts = {};
+  let projectionCharts = {};
 
   function initCharts() {
     const transformerIds = ["26730028", "26730039", "26730050"];
@@ -438,6 +693,99 @@ const braemoor = electricityConsumptionData["26730039"];
                   color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
                 },
                 beginAtZero: true,
+              },
+            },
+          },
+        });
+      }
+
+      // Initialize projection charts
+      const projectionCtx = document.getElementById(`projectionChart${id}`) as HTMLCanvasElement;
+      if (projectionCtx) {
+        const data = projectionData[id];
+        const maxCapacity = data[0].maxRated;
+
+        projectionCharts[id] = new Chart(projectionCtx, {
+          type: "bar",
+          data: {
+            labels: data.map((d) => d.timeChunk),
+            datasets: [
+              {
+                label: "Current Load",
+                data: data.map((d) => d.current),
+                backgroundColor: "rgba(59, 130, 246, 0.8)",
+                borderColor: "rgb(59, 130, 246)",
+                borderWidth: 1,
+              },
+              {
+                label: "EV Charging",
+                data: data.map((d) => d.ev),
+                backgroundColor: "rgba(168, 85, 247, 0.8)",
+                borderColor: "rgb(168, 85, 247)",
+                borderWidth: 1,
+              },
+              {
+                label: "Heat Pumps",
+                data: data.map((d) => d.heatPump),
+                backgroundColor: "rgba(34, 197, 94, 0.8)",
+                borderColor: "rgb(34, 197, 94)",
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false,
+              },
+            },
+            scales: {
+              x: {
+                stacked: true,
+                ticks: {
+                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
+                  maxRotation: 45,
+                },
+                grid: {
+                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
+                },
+              },
+              y: {
+                stacked: true,
+                max: maxCapacity + 10, // Add some headroom above max capacity
+                ticks: {
+                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
+                },
+                grid: {
+                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
+                },
+                beginAtZero: true,
+              },
+            },
+            // Add annotation for max capacity line
+            plugins: {
+              afterDraw: function (chart) {
+                const ctx = chart.ctx;
+                const yAxis = chart.scales.y;
+                const yPosition = yAxis.getPixelForValue(maxCapacity);
+
+                ctx.save();
+                ctx.strokeStyle = "rgba(239, 68, 68, 0.9)";
+                ctx.lineWidth = 3;
+                ctx.setLineDash([10, 5]);
+                ctx.beginPath();
+                ctx.moveTo(chart.chartArea.left, yPosition);
+                ctx.lineTo(chart.chartArea.right, yPosition);
+                ctx.stroke();
+
+                // Add label
+                ctx.fillStyle = "rgba(239, 68, 68, 0.9)";
+                ctx.font = "12px Arial";
+                ctx.fillText(`Max Capacity: ${maxCapacity} kVA`, chart.chartArea.left + 10, yPosition - 5);
+
+                ctx.restore();
               },
             },
           },
@@ -481,47 +829,3 @@ const braemoor = electricityConsumptionData["26730039"];
     setupChartToggles();
   });
 </script>
-
-<style>
-  .data-toggle.active {
-    @apply bg-green-600 text-white;
-  }
-
-  /* Smooth scrolling for full-screen sections */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
-  /* Dark mode scrollbar */
-  @media (prefers-color-scheme: dark) {
-    ::-webkit-scrollbar-track {
-      background: #374151;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #6b7280;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #9ca3af;
-    }
-  }
-</style>
