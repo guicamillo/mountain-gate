@@ -11,17 +11,31 @@ const braemoor = electricityConsumptionData["26730039"];
 
 <Layout title="Electricity Consumption Report">
   <!-- Section 1: Overview -->
-  <section
-    class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-800 dark:to-slate-900"
-  >
+  <section class="min-h-screen w-full flex items-center justify-center bg-blue-50 dark:bg-slate-800">
     <div class="container mx-auto px-6 py-20">
       <div class="text-center mb-16">
-        <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
-          Electricity Consumption Report
+        <h1 class="text-5xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          Electricity Consumption Report & Future Planning
         </h1>
-        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          Comprehensive analysis of energy usage patterns and efficiency metrics for Strata NW2040
+        <p class="text-md text-gray-600 dark:text-gray-300 max-w-7xl mx-auto">
+          On this page, you will find a comprehensive analysis of energy usage patterns and efficiency metrics for
+          Strata NW2040. This analysis is based on the data from the electricity consumption report emitted by BC Hydro,
+          as requested by the council, spanning from 2024-02-01 to 2025-02-01.
         </p>
+      </div>
+
+      <!-- Why This Analysis Matters -->
+      <div class="w-full mb-16">
+        <div
+          class="bg-indigo-100 dark:bg-indigo-800/50 rounded-3xl p-8 text-center border border-indigo-200 dark:border-indigo-700/50"
+        >
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Why This Analysis Matters</h3>
+          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-7xl mx-auto">
+            Understanding current peak loads is essential for planning future electrical infrastructure. Heat pumps and
+            electric vehicles will significantly increase demand, and <strong>proper load management</strong>
+            will be critical to avoid transformer overloads and power outages.
+          </p>
+        </div>
       </div>
 
       <!-- Current Situation Overview -->
@@ -29,7 +43,8 @@ const braemoor = electricityConsumptionData["26730039"];
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl mb-8">
           <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">Current Situation</h2>
           <p class="text-lg text-center text-gray-600 dark:text-gray-300 mb-12">
-            Three transformers distributed unevenly across the complex
+            As of today, our strata has three transformers distributed unevenly across the complex. Each transformer
+            services a different number of units and has a different max rated capacity:
           </p>
 
           <div class="grid md:grid-cols-3 gap-8">
@@ -144,10 +159,8 @@ const braemoor = electricityConsumptionData["26730039"];
     </div>
   </section>
 
-  <!-- Section 2: Analyzing Averages -->
-  <section
-    class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-10 dark:from-slate-900 dark:to-slate-800"
-  >
+  <!-- Section 2: Data Analysis Method -->
+  <section class="min-h-screen w-full flex items-center justify-center bg-blue-50 dark:bg-slate-900">
     <div class="container mx-auto px-6 py-20">
       <div class="text-center mb-16">
         <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Data Analysis Method</h2>
@@ -157,12 +170,27 @@ const braemoor = electricityConsumptionData["26730039"];
       </div>
 
       <!-- Our Analysis Method -->
-      <div class="max-w-4xl mx-auto mb-16">
+      <div class="max-w-6xl mx-auto mb-16">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl text-center">
-          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-4xl mx-auto mb-6">
+          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-6xl mx-auto mb-6">
             This report focuses on <strong>peak usage patterns</strong> and <strong>capacity utilization</strong> rather
-            than just averages. Peak loads determine infrastructure requirements and reveal potential bottlenecks that averages
-            can mask.
+            than just averages. Peak loads determine infrastructure requirements and reveal bottlenecks that averages mask.
+          </p>
+          <hr class="my-6" />
+          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-6xl mx-auto mb-6">
+            to have a better understanding of the current situation, we need to look at the peak usage patterns and
+            capacity utilization. Energy consumption is not evenly distributed throughout the day, and the peak usage
+            patterns are not always the same. To facilitate this, we have analyzed the data by time chunks, which are
+            defined as follows:
+            <span class="text-gray-700 dark:text-gray-300 mb-6 block">
+              <strong>Time Chunks:</strong>
+              Night (12 AM - 6 AM), Morning (6 AM - 12 PM), Afternoon (12 PM - 6 PM), Evening (6 PM - 12 AM)
+            </span>
+          </p>
+          <hr class="my-6" />
+          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-6xl mx-auto mb-6">
+            By analyzing the data by time chunks, we can get a better understanding of the peak usage patterns and
+            capacity utilization and how they vary across different transformers and time periods.
           </p>
         </div>
       </div>
@@ -170,168 +198,105 @@ const braemoor = electricityConsumptionData["26730039"];
       <!-- Analysis Content -->
       <div class="max-w-6xl mx-auto">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl">
-          <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <!-- Left Side: The Problem with Averages -->
-            <div>
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">The Problem with Averages</h3>
-
-              <div class="space-y-6">
-                <div class="bg-red-50 dark:bg-red-900/20 rounded-xl p-6 border-l-4 border-red-500">
-                  <h4 class="font-semibold text-red-800 dark:text-red-300 mb-2">Hidden Peaks</h4>
-                  <p class="text-gray-700 dark:text-gray-300 text-sm">
-                    Average consumption masks critical peak usage periods that can overload transformers and cause
-                    outages.
-                  </p>
-                </div>
-
-                <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-6 border-l-4 border-yellow-500">
-                  <h4 class="font-semibold text-yellow-800 dark:text-yellow-300 mb-2">Uneven Distribution</h4>
-                  <p class="text-gray-700 dark:text-gray-300 text-sm">
-                    Averages don't reveal which transformers are consistently overloaded while others remain
-                    underutilized.
-                  </p>
-                </div>
-
-                <div class="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 border-l-4 border-orange-500">
-                  <h4 class="font-semibold text-orange-800 dark:text-orange-300 mb-2">Time-Based Patterns</h4>
-                  <p class="text-gray-700 dark:text-gray-300 text-sm">
-                    Daily and seasonal variations are lost when data is averaged, hiding critical usage patterns.
-                  </p>
-                </div>
-              </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">The Problem with Averages</h3>
+          <div class="grid lg:grid-cols-3 gap-12 items-center">
+            <div class="bg-red-50 dark:bg-red-900/20 rounded-xl p-6 border-l-4 border-red-500">
+              <h4 class="font-semibold text-red-800 dark:text-red-300 mb-2">Hidden Peaks</h4>
+              <p class="text-gray-700 dark:text-gray-300 text-sm">
+                Average consumption masks critical peak usage periods that can overload transformers and cause outages.
+              </p>
             </div>
 
-            <!-- Right Side: Visual Example -->
-            <div>
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Real Example</h3>
+            <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-6 border-l-4 border-yellow-500">
+              <h4 class="font-semibold text-yellow-800 dark:text-yellow-300 mb-2">Uneven Distribution</h4>
+              <p class="text-gray-700 dark:text-gray-300 text-sm">
+                Averages don't reveal which transformers are consistently overloaded while others remain underutilized.
+              </p>
+            </div>
 
-              <div
-                class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-6"
-              >
-                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">{moorside.name} (Transformer 26730028)</h4>
-
-                <div class="space-y-4">
-                  <div class="flex justify-between items-center">
-                    <span class="text-sm text-gray-600 dark:text-gray-400">Daily Average:</span>
-                    <span class="text-lg font-bold text-blue-600 dark:text-blue-400">
-                      {
-                        (
-                          (moorside.currentUsage.max.Night +
-                            moorside.currentUsage.max.Morning +
-                            moorside.currentUsage.max.Afternoon +
-                            moorside.currentUsage.max.Evening) /
-                          4
-                        ).toFixed(1)
-                      } kWh
-                    </span>
-                  </div>
-
-                  <div class="flex justify-between items-center">
-                    <span class="text-sm text-gray-600 dark:text-gray-400">Peak Usage:</span>
-                    <span class="text-lg font-bold text-red-600 dark:text-red-400"
-                      >{moorside.currentUsage.max.Evening} kWh</span
-                    >
-                  </div>
-
-                  <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                    <div
-                      class="bg-gradient-to-r from-blue-500 to-red-500 h-3 rounded-full"
-                      style={`width: ${(moorside.currentUsage.max.Evening / moorside.currentUsage.max.Evening) * 100}%`}
-                    >
-                    </div>
-                  </div>
-
-                  <p class="text-xs text-gray-500 dark:text-gray-400 text-center">
-                    Peak is {
-                      (
-                        (moorside.currentUsage.max.Evening /
-                          ((moorside.currentUsage.max.Night +
-                            moorside.currentUsage.max.Morning +
-                            moorside.currentUsage.max.Afternoon +
-                            moorside.currentUsage.max.Evening) /
-                            4) -
-                          1) *
-                        100
-                      ).toFixed(0)
-                    }% higher than daily average
-                  </p>
-                </div>
-              </div>
-
-              <div
-                class="mt-6 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6"
-              >
-                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">The Impact</h4>
-                <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                  <li class="flex items-center">
-                    <Icon name="bx:check" class="text-green-500 mr-2" />
-                    System appears stable at average levels
-                  </li>
-                  <li class="flex items-center">
-                    <Icon name="bx:x" class="text-red-500 mr-2" />
-                    Peak loads cause transformer stress
-                  </li>
-                  <li class="flex items-center">
-                    <Icon name="bx:x" class="text-red-500 mr-2" />
-                    Risk of equipment failure during peak times
-                  </li>
-                  <li class="flex items-center">
-                    <Icon name="bx:x" class="text-red-500 mr-2" />
-                    Potential power outages for residents
-                  </li>
-                </ul>
-              </div>
+            <div class="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 border-l-4 border-orange-500">
+              <h4 class="font-semibold text-orange-800 dark:text-orange-300 mb-2">Time-Based Patterns</h4>
+              <p class="text-gray-700 dark:text-gray-300 text-sm">
+                Daily and seasonal variations are lost when data is averaged, hiding critical usage patterns.
+              </p>
             </div>
           </div>
 
-          <!-- Charts: Real Usage Averages per Transformer -->
-          <div class="mt-12">
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-              Current Transformer usage by Time Chunk: Average and Peak
-            </h3>
-            <div class="grid md:grid-cols-3 gap-8">
-              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
-                <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">Transformer 26730028</h4>
-                <div class="relative h-64 md:h-80">
-                  <canvas id="chart26730028"></canvas>
-                </div>
-              </div>
-              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
-                <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">Transformer 26730039</h4>
-                <div class="relative h-64 md:h-80">
-                  <canvas id="chart26730039"></canvas>
-                </div>
-              </div>
-              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
-                <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">Transformer 26730050</h4>
-                <div class="relative h-64 md:h-80">
-                  <canvas id="chart26730050"></canvas>
-                </div>
-              </div>
-            </div>
+          <div
+            class="mt-6 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6"
+          >
+            <h4 class="font-semibold text-gray-900 dark:text-white mb-4">The Impact</h4>
+            <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <li class="flex items-center">
+                <Icon name="bx:check" class="text-green-500 mr-2" />
+                System appears stable at average levels
+              </li>
+              <li class="flex items-center">
+                <Icon name="bx:x" class="text-red-500 mr-2" />
+                Peak loads cause transformer stress
+              </li>
+              <li class="flex items-center">
+                <Icon name="bx:x" class="text-red-500 mr-2" />
+                Risk of equipment failure during peak times
+              </li>
+              <li class="flex items-center">
+                <Icon name="bx:x" class="text-red-500 mr-2" />
+                Potential power outages for residents
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-            <!-- Chart Legend -->
-            <div class="mt-8">
-              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow w-full">
-                <div class="flex flex-wrap items-center gap-6">
-                  <span class="font-semibold text-gray-900 dark:text-white">Chart Legend:</span>
-                  <div class="flex items-center">
-                    <div class="w-4 h-4 bg-blue-500 rounded mr-2"></div>
-                    <span class="text-sm text-gray-700 dark:text-gray-300">Average Usage</span>
-                  </div>
-                  <div class="flex items-center">
-                    <div class="w-4 h-4 bg-red-500 rounded mr-2"></div>
-                    <span class="text-sm text-gray-700 dark:text-gray-300">Peak Usage</span>
-                  </div>
-                  <div class="flex items-center">
-                    <div
-                      class="w-4 h-1 bg-red-500 rounded mr-2"
-                      style="border: 2px dashed rgba(239, 68, 68, 0.9); background: none;"
-                    >
-                    </div>
-                    <span class="text-sm text-gray-700 dark:text-gray-300">Max Capacity</span>
-                  </div>
+      <!-- Charts: Real Usage Averages per Transformer -->
+      <div class="mt-12">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+          Current Transformer usage by Time Chunk: Average vs Peak
+        </h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+            <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-1">{moorside.name}</h4>
+            <div class="text-center text-xs text-gray-500 dark:text-gray-400 mb-2">26730028</div>
+            <div class="relative h-64 md:h-80">
+              <canvas id="chart26730028"></canvas>
+            </div>
+          </div>
+          <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+            <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-1">{braemoor.name}</h4>
+            <div class="text-center text-xs text-gray-500 dark:text-gray-400 mb-2">26730039</div>
+            <div class="relative h-64 md:h-80">
+              <canvas id="chart26730039"></canvas>
+            </div>
+          </div>
+          <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+            <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-1">{ridgemoor.name}</h4>
+            <div class="text-center text-xs text-gray-500 dark:text-gray-400 mb-2">26730050</div>
+            <div class="relative h-64 md:h-80">
+              <canvas id="chart26730050"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart Legend -->
+        <div class="mt-8">
+          <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow w-full">
+            <div class="flex flex-wrap items-center gap-6">
+              <span class="font-semibold text-gray-900 dark:text-white">Chart Legend:</span>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-blue-500 rounded mr-2"></div>
+                <span class="text-sm text-gray-700 dark:text-gray-300">Average Usage</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-red-500 rounded mr-2"></div>
+                <span class="text-sm text-gray-700 dark:text-gray-300">Peak Usage</span>
+              </div>
+              <div class="flex items-center">
+                <div
+                  class="w-4 h-1 bg-red-500 rounded mr-2"
+                  style="border: 2px dashed rgba(239, 68, 68, 0.9); background: none;"
+                >
                 </div>
+                <span class="text-sm text-gray-700 dark:text-gray-300">Max Capacity</span>
               </div>
             </div>
           </div>
@@ -341,9 +306,7 @@ const braemoor = electricityConsumptionData["26730039"];
   </section>
 
   <!-- Section 3: Future Planning Context -->
-  <section
-    class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-purple-50 to-pink-100 dark:from-slate-800 dark:to-slate-900"
-  >
+  <section class="min-h-screen w-full flex items-center justify-center bg-blue-50 dark:bg-slate-900">
     <div class="container mx-auto px-6 py-20">
       <div class="text-center mb-16">
         <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Future Planning Context</h2>
@@ -438,126 +401,113 @@ const braemoor = electricityConsumptionData["26730039"];
             </div>
           </div>
         </div>
-
-        <!-- Key Planning Insight -->
-        <div
-          class="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-3xl p-8 text-center"
-        >
-          <Icon name="bx:bxs-tree" class="text-4xl text-indigo-600 dark:text-indigo-400 mx-auto mb-4" />
-          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Why This Analysis Matters</h3>
-          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-4xl mx-auto">
-            Understanding current peak loads is essential for planning future electrical infrastructure. Heat pumps and
-            electric vehicles will significantly increase demand, and <strong>proper load management</strong>
-            will be critical to avoid transformer overloads and power outages.
-          </p>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- Section 4: Projected Load Analysis -->
-  <section
-    class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-orange-50 to-red-100 dark:from-slate-900 dark:to-slate-800"
-  >
+  <section class="min-h-screen w-full flex items-center justify-center bg-blue-50 dark:bg-slate-900">
     <div class="container mx-auto px-6 py-20">
       <div class="text-center mb-16">
         <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Projected Load Analysis</h2>
         <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          Future electrical demand with heat pumps and electric vehicle charging
+          Future electrical demand with heat pumps and electric vehicle charging, unthrotled.
         </p>
       </div>
 
       <div class="max-w-6xl mx-auto">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl">
-          <!-- Charts: Projected Load Breakdown per Transformer -->
-          <div class="mb-12">
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-              Projected Load Breakdown by Time Chunk
-            </h3>
-            <p class="text-center text-gray-600 dark:text-gray-400 mb-8">
-              Current usage + Electric Vehicle charging + Heat Pump load
-            </p>
-            <div class="grid md:grid-cols-3 gap-8">
-              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
-                <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">
-                  {ridgemoor.name} (Critical)
-                </h4>
-                <div class="relative h-64 md:h-80">
-                  <canvas id="projectionChart26730050"></canvas>
-                </div>
-              </div>
-              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
-                <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">{moorside.name} (Moderate)</h4>
-                <div class="relative h-64 md:h-80">
-                  <canvas id="projectionChart26730028"></canvas>
-                </div>
-              </div>
-              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
-                <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">{braemoor.name} (Low Risk)</h4>
-                <div class="relative h-64 md:h-80">
-                  <canvas id="projectionChart26730039"></canvas>
-                </div>
+        <!-- Charts: Projected Load Breakdown per Transformer -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+            Projected Load Breakdown by Time Chunk
+          </h3>
+          <p class="text-center text-gray-600 dark:text-gray-400 mb-8">
+            Current usage + Electric Vehicle charging + Heat Pump load
+          </p>
+          <div
+            class="grid md:grid-cols-3 gap-8"
+            style="width: 85vw; max-width: 85vw; margin-left: 50%; transform: translateX(-50%);"
+          >
+            <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+              <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">
+                {ridgemoor.name} (Critical)
+              </h4>
+              <div class="relative h-64 md:h-80">
+                <canvas id="projectionChart26730050"></canvas>
               </div>
             </div>
-
-            <!-- Chart Legend -->
-            <div class="mt-8">
-              <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow w-full">
-                <div class="flex flex-wrap items-center gap-6">
-                  <span class="font-semibold text-gray-900 dark:text-white">Chart Legend:</span>
-                  <div class="flex items-center">
-                    <div class="w-4 h-4 bg-blue-500 rounded mr-2"></div>
-                    <span class="text-sm text-gray-700 dark:text-gray-300">Current Load</span>
-                  </div>
-                  <div class="flex items-center">
-                    <div class="w-4 h-4 bg-purple-500 rounded mr-2"></div>
-                    <span class="text-sm text-gray-700 dark:text-gray-300">EV Charging</span>
-                  </div>
-                  <div class="flex items-center">
-                    <div class="w-4 h-4 bg-green-500 rounded mr-2"></div>
-                    <span class="text-sm text-gray-700 dark:text-gray-300">Heat Pumps</span>
-                  </div>
-                  <div class="flex items-center">
-                    <div
-                      class="w-4 h-1 bg-red-500 rounded mr-2"
-                      style="border: 2px dashed rgba(239, 68, 68, 0.9); background: none;"
-                    >
-                    </div>
-                    <span class="text-sm text-gray-700 dark:text-gray-300">Max Capacity</span>
-                  </div>
-                </div>
+            <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+              <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">{moorside.name} (Moderate)</h4>
+              <div class="relative h-64 md:h-80">
+                <canvas id="projectionChart26730028"></canvas>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+              <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">{braemoor.name} (Low Risk)</h4>
+              <div class="relative h-64 md:h-80">
+                <canvas id="projectionChart26730039"></canvas>
               </div>
             </div>
           </div>
 
-          <!-- Key Findings -->
-          <div
-            class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-8"
-          >
-            <div class="text-center">
-              <Icon name="bx:bxs-error" class="text-4xl text-red-600 dark:text-red-400 mx-auto mb-4" />
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Critical Infrastructure Findings</h3>
-              <div class="grid md:grid-cols-3 gap-6 text-left">
-                <div>
-                  <h4 class="font-semibold text-red-800 dark:text-red-300 mb-2">{ridgemoor.name} - Immediate Risk</h4>
-                  <p class="text-gray-700 dark:text-gray-300 text-sm">
-                    Exceeds capacity in ALL time periods with future loads. Requires immediate infrastructure upgrades.
-                  </p>
+          <!-- Chart Legend -->
+          <div class="mt-8">
+            <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow w-full">
+              <div class="flex flex-wrap items-center gap-6">
+                <span class="font-semibold text-gray-900 dark:text-white">Chart Legend:</span>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-blue-500 rounded mr-2"></div>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">Current Load</span>
                 </div>
-                <div>
-                  <h4 class="font-semibold text-orange-800 dark:text-orange-300 mb-2">
-                    {moorside.name} - Evening Risk
-                  </h4>
-                  <p class="text-gray-700 dark:text-gray-300 text-sm">
-                    Exceeds capacity during evening peak when EVs charge. Load management strategies needed.
-                  </p>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-purple-500 rounded mr-2"></div>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">EV Charging</span>
                 </div>
-                <div>
-                  <h4 class="font-semibold text-green-800 dark:text-green-300 mb-2">{braemoor.name} - Manageable</h4>
-                  <p class="text-gray-700 dark:text-gray-300 text-sm">
-                    Stays within capacity limits across all time periods. Well-positioned for future growth.
-                  </p>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-green-500 rounded mr-2"></div>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">Heat Pumps</span>
                 </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-4 h-1 bg-red-500 rounded mr-2"
+                    style="border: 2px dashed rgba(239, 68, 68, 0.9); background: none;"
+                  >
+                  </div>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">Max Capacity</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Findings -->
+        <div
+          class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-8"
+        >
+          <div class="text-center">
+            <Icon name="bx:bxs-error" class="text-4xl text-red-600 dark:text-red-400 mx-auto mb-4" />
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Critical Infrastructure Findings</h3>
+            <div class="grid md:grid-cols-3 gap-6 text-left">
+              <div>
+                <h4 class="font-semibold text-red-800 dark:text-red-300 mb-2">{ridgemoor.name} - Immediate Risk</h4>
+                <p class="text-gray-700 dark:text-gray-300 text-sm">
+                  Exceeds capacity in <strong>ALL</strong> time periods with future loads. Requires immediate infrastructure
+                  upgrades, regardless of the adoption rate of heat pumps and electric vehicles.
+                </p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-orange-800 dark:text-orange-300 mb-2">
+                  {moorside.name} - at Risk
+                </h4>
+                <p class="text-gray-700 dark:text-gray-300 text-sm">
+                  Exceeds capacity during evening peak when EVs charge. Load management strategies needed.
+                </p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-green-800 dark:text-green-300 mb-2">{braemoor.name} - Manageable</h4>
+                <p class="text-gray-700 dark:text-gray-300 text-sm">
+                  Stays within capacity limits across all time periods. Well-positioned for future growth.
+                </p>
               </div>
             </div>
           </div>
@@ -567,9 +517,9 @@ const braemoor = electricityConsumptionData["26730039"];
   </section>
 
   <!-- Data Verification Section -->
-  <section class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800 py-20">
+  <section class="bg-blue-50 dark:bg-slate-900 py-20">
     <div class="container mx-auto px-6">
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-7xl mx-auto">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl text-center">
           <Icon name="bx:bxs-data" class="text-4xl text-blue-600 dark:text-blue-400 mx-auto mb-4" />
           <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Verify Our Analysis</h3>
@@ -611,33 +561,21 @@ const braemoor = electricityConsumptionData["26730039"];
     "Evening (6 PM - 12 AM)",
   ];
 
-  const colorMap = {
-    "26730028": { bg: "rgba(239, 68, 68, 0.8)", border: "rgb(239, 68, 68)" },
-    "26730039": { bg: "rgba(245, 158, 11, 0.8)", border: "rgb(245, 158, 11)" },
-    "26730050": { bg: "rgba(249, 115, 22, 0.8)", border: "rgb(249, 115, 22)" },
-  } as const;
-
   // Projection data from electricity-consumption-data.ts
-  const projectionData = {
-    "26730028": [
-      { timeChunk: "Night", current: 17.5, ev: 27.72, heatPump: 0, total: 45.22, maxRated: 50 },
-      { timeChunk: "Morning", current: 18.87, ev: 0, heatPump: 15, total: 33.87, maxRated: 50 },
-      { timeChunk: "Afternoon", current: 28.51, ev: 0, heatPump: 15, total: 43.51, maxRated: 50 },
-      { timeChunk: "Evening", current: 31, ev: 27.72, heatPump: 0, total: 58.72, maxRated: 50 },
-    ],
-    "26730050": [
-      { timeChunk: "Night", current: 12.84, ev: 27.72, heatPump: 0, total: 40.56, maxRated: 25 },
-      { timeChunk: "Morning", current: 16.71, ev: 0, heatPump: 15, total: 31.71, maxRated: 25 },
-      { timeChunk: "Afternoon", current: 22.75, ev: 0, heatPump: 15, total: 37.75, maxRated: 25 },
-      { timeChunk: "Evening", current: 22.52, ev: 27.72, heatPump: 0, total: 50.24, maxRated: 25 },
-    ],
-    "26730039": [
-      { timeChunk: "Night", current: 10.21, ev: 27.72, heatPump: 0, total: 37.93, maxRated: 50 },
-      { timeChunk: "Morning", current: 15.22, ev: 0, heatPump: 15, total: 30.22, maxRated: 50 },
-      { timeChunk: "Afternoon", current: 18.32, ev: 0, heatPump: 15, total: 33.32, maxRated: 50 },
-      { timeChunk: "Evening", current: 18.18, ev: 27.72, heatPump: 0, total: 45.9, maxRated: 50 },
-    ],
-  } as const;
+  // Build projectionData from electricityConsumptionData to avoid duplication
+  const projectionData = Object.fromEntries(
+    Object.entries(electricityConsumptionData).map(([id, transformer]) => [
+      id,
+      transformer.projections.map((proj) => ({
+        timeChunk: proj.timeChunk,
+        current: proj.currentMaxLoad,
+        ev: proj.projectedEvLoad,
+        heatPump: proj.projectedHeatPumpLoad,
+        total: proj.projectedTotalLoad,
+        maxRated: proj.maxRatedLoad,
+      })),
+    ]),
+  );
 
   const transformerData = {
     averages: {
@@ -720,6 +658,7 @@ const braemoor = electricityConsumptionData["26730039"];
   let transformerCharts = {};
   let projectionCharts = {};
 
+  const isDarkMode = !!window.matchMedia("(prefers-color-scheme: dark)").matches;
   function initCharts() {
     const transformerIds = ["26730028", "26730039", "26730050"];
 
@@ -768,20 +707,20 @@ const braemoor = electricityConsumptionData["26730039"];
             scales: {
               x: {
                 ticks: {
-                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
+                  color: isDarkMode ? "#e5e7eb" : "#374151",
                   maxRotation: 45,
                 },
                 grid: {
-                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
+                  color: isDarkMode ? "#374151" : "#e5e7eb",
                 },
               },
               y: {
                 max: maxCapacityForTransformer + 10, // Add headroom above max capacity
                 ticks: {
-                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
+                  color: isDarkMode ? "#e5e7eb" : "#374151",
                 },
                 grid: {
-                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
+                  color: isDarkMode ? "#374151" : "#e5e7eb",
                 },
                 beginAtZero: true,
               },
@@ -842,7 +781,7 @@ const braemoor = electricityConsumptionData["26730039"];
                 ctx.stroke();
 
                 // Add label
-                ctx.fillStyle = "rgba(239, 68, 68, 0.9)";
+                ctx.fillStyle = isDarkMode ? "rgba(239, 68, 68, 0.9)" : "rgba(127, 29, 29, 0.95)";
                 ctx.font = "12px Arial";
                 ctx.fillText(`${maxCapacity} kVA`, chart.chartArea.left + 10, yPosition - 5);
 
@@ -862,21 +801,21 @@ const braemoor = electricityConsumptionData["26730039"];
               x: {
                 stacked: true,
                 ticks: {
-                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
+                  color: isDarkMode ? "#e5e7eb" : "#374151",
                   maxRotation: 45,
                 },
                 grid: {
-                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
+                  color: isDarkMode ? "#374151" : "#e5e7eb",
                 },
               },
               y: {
                 stacked: true,
                 max: maxCapacity + 10, // Add some headroom above max capacity
                 ticks: {
-                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#e5e7eb" : "#374151",
+                  color: isDarkMode ? "#e5e7eb" : "#374151",
                 },
                 grid: {
-                  color: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#374151" : "#e5e7eb",
+                  color: isDarkMode ? "#374151" : "#e5e7eb",
                 },
                 beginAtZero: true,
               },

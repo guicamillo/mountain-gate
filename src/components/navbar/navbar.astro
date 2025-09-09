@@ -19,10 +19,10 @@ const menuitems = [
     title: "Meetings & Reports",
     path: `/meetings-reports/`,
   },
-  {
-    title: "Electricity Report",
-    path: `/electricity-consumption/`,
-  },
+  //   {
+  //     title: "Electricity Report",
+  //     path: `/electricity-consumption/`,
+  //   },
   {
     title: "Forms & Links",
     path: `/forms-links/`,
@@ -39,22 +39,26 @@ const menuitems = [
 ---
 
 <div
-  class="sticky top-0 z-40 w-full backdrop-blur flex-none lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/75 supports-backdrop-blur:bg-white/60 dark:bg-transparent print:hidden"
+  id="navbar"
+  class="sticky top-0 z-40 w-full backdrop-blur flex-none lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/75 supports-backdrop-blur:bg-white/60 dark:bg-transparent print:hidden transition-all duration-300"
 >
   <Container>
-    <header class="z-40 sticky py-5 top-0 flex flex-col lg:flex-row justify-between items-center">
+    <header
+      id="navbar-header"
+      class="z-40 sticky py-5 top-0 flex flex-col lg:flex-row justify-between items-center transition-all duration-300"
+    >
       <Astronav>
         <div class="flex w-full lg:w-auto items-center justify-between">
           <a href={`/`} class="text-lg tracking-tighter">
             <div class="flex flex-row gap-1 items-center">
-              <div class="relative w-[50px] h-[50px] overflow-hidden">
+              <div id="logo-container" class="relative w-[50px] h-[50px] overflow-hidden transition-all duration-300">
                 <Image
                   src={heroImage}
                   alt=""
                   width="50"
                   loading="eager"
                   format="svg"
-                  class="absolute inset-0 block dark:hidden"
+                  class="absolute inset-0 block dark:hidden transition-all duration-300"
                 />
                 <Image
                   src={heroDarkImage}
@@ -62,15 +66,19 @@ const menuitems = [
                   width="50"
                   loading="eager"
                   format="svg"
-                  class="absolute inset-0 hidden dark:block"
+                  class="absolute inset-0 hidden dark:block transition-all duration-300"
                 />
               </div>
-              <div class="flex flex-col gap-px-1">
+              <div id="logo-text" class="flex flex-col gap-px-1 transition-all duration-300">
                 <div>
                   <span class="font-bold text-slate-900 dark:text-white">Mountain</span>
                   <span class="text-slate-800 dark:text-gray-200">Gate</span>
                 </div>
-                <span class="font-thin text-xs text-slate-400 dark:text-gray-400">Strata NW2040</span>
+                <span
+                  id="logo-subtitle"
+                  class="font-thin text-xs text-slate-400 dark:text-gray-400 transition-all duration-300"
+                  >Strata NW2040</span
+                >
               </div>
             </div>
           </a>
@@ -103,3 +111,69 @@ const menuitems = [
     </header>
   </Container>
 </div>
+
+<script>
+  // Shrinking navbar functionality
+  function initShrinkingNavbar() {
+    const navbar = document.getElementById("navbar");
+    const header = document.getElementById("navbar-header");
+    const logoContainer = document.getElementById("logo-container");
+    const logoSubtitle = document.getElementById("logo-subtitle");
+
+    if (!navbar || !header || !logoContainer || !logoSubtitle) return;
+
+    let lastScrollTop = 0;
+    let isScrollingDown = false;
+
+    function handleScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollThreshold = 100; // Start shrinking after 100px
+
+      // Determine scroll direction
+      isScrollingDown = scrollTop > lastScrollTop;
+      lastScrollTop = scrollTop;
+
+      if (scrollTop > scrollThreshold) {
+        // Shrunk state
+        header.classList.remove("py-5");
+        header.classList.add("py-2");
+        logoContainer.classList.remove("w-[50px]", "h-[50px]");
+        logoContainer.classList.add("w-[35px]", "h-[35px]");
+        navbar.classList.add("bg-white/90", "dark:bg-slate-900/90");
+        navbar.classList.remove("bg-white/75");
+      } else {
+        // Full size state
+        header.classList.remove("py-2");
+        header.classList.add("py-5");
+        logoContainer.classList.remove("w-[35px]", "h-[35px]");
+        logoContainer.classList.add("w-[50px]", "h-[50px]");
+        navbar.classList.remove("bg-white/90", "dark:bg-slate-900/90");
+        navbar.classList.add("bg-white/75");
+      }
+    }
+
+    // Throttle scroll events for better performance
+    let ticking = false;
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(handleScroll);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        requestTick();
+        ticking = false;
+      },
+      { passive: true },
+    );
+  }
+
+  // Initialize when DOM is loaded
+  document.addEventListener("DOMContentLoaded", initShrinkingNavbar);
+
+  // Also initialize on page navigation for SPA-like behavior
+  document.addEventListener("astro:page-load", initShrinkingNavbar);
+</script>
