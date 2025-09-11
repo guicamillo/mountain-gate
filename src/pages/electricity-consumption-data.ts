@@ -1,3 +1,10 @@
+const heatPumpLoad = 3.5;
+const evLoad = 7.7;
+
+const calculateLoad = (load: number, units: number, adoptionFactor: number) => {
+  return load * units * adoptionFactor * 0.6;
+};
+
 export const electricityConsumptionData = {
   "26730028": {
     name: "Moorside",
@@ -15,38 +22,54 @@ export const electricityConsumptionData = {
       {
         timeChunk: "Night",
         currentMaxLoad: 17.5,
-        projectedEvLoad: 27.72,
+        projectedEvLoad: calculateLoad(evLoad, 20, 0.3),
         projectedHeatPumpLoad: 0,
-        projectedTotalLoad: 45.22,
+        get projectedTotalLoad() {
+          return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
+        },
+        get projectedTotalLoadWithThrottledEVs() {
+          return this.currentMaxLoad + this.projectedEvLoad / 2 + this.projectedHeatPumpLoad;
+        },
         maxRatedLoad: 50,
-        "Exceeds?": "No",
       },
       {
         timeChunk: "Morning",
         currentMaxLoad: 18.87,
         projectedEvLoad: 0,
-        projectedHeatPumpLoad: 15,
-        projectedTotalLoad: 33.87,
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 20, 0.5),
+        get projectedTotalLoad() {
+          return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
+        },
+        get projectedTotalLoadWithThrottledEVs() {
+          return this.currentMaxLoad + this.projectedEvLoad / 2 + this.projectedHeatPumpLoad;
+        },
         maxRatedLoad: 50,
-        "Exceeds?": "No",
       },
       {
         timeChunk: "Afternoon",
         currentMaxLoad: 28.51,
         projectedEvLoad: 0,
-        projectedHeatPumpLoad: 15,
-        projectedTotalLoad: 43.51,
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 20, 0.5),
+        get projectedTotalLoad() {
+          return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
+        },
+        get projectedTotalLoadWithThrottledEVs() {
+          return this.currentMaxLoad + this.projectedEvLoad / 2 + this.projectedHeatPumpLoad;
+        },
         maxRatedLoad: 50,
-        "Exceeds?": "No",
       },
       {
         timeChunk: "Evening",
         currentMaxLoad: 31,
-        projectedEvLoad: 27.72,
-        projectedHeatPumpLoad: 0,
-        projectedTotalLoad: 58.72,
+        projectedEvLoad: calculateLoad(evLoad, 20, 0.3),
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 20, 0.5),
+        get projectedTotalLoad() {
+          return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
+        },
+        get projectedTotalLoadWithThrottledEVs() {
+          return this.currentMaxLoad + this.projectedEvLoad / 2 + this.projectedHeatPumpLoad;
+        },
         maxRatedLoad: 50,
-        "Exceeds?": "Yes",
       },
     ],
   },
@@ -67,38 +90,54 @@ export const electricityConsumptionData = {
       {
         timeChunk: "Night",
         currentMaxLoad: 12.84,
-        projectedEvLoad: 27.72,
+        projectedEvLoad: calculateLoad(evLoad, 15, 0.3),
         projectedHeatPumpLoad: 0,
-        projectedTotalLoad: 40.56,
+        get projectedTotalLoad() {
+          return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
+        },
+        get projectedTotalLoadWithThrottledEVs() {
+          return this.currentMaxLoad + this.projectedEvLoad / 2 + this.projectedHeatPumpLoad;
+        },
         maxRatedLoad: 25,
-        "Exceeds?": "Yes",
       },
       {
         timeChunk: "Morning",
         currentMaxLoad: 16.71,
         projectedEvLoad: 0,
-        projectedHeatPumpLoad: 15,
-        projectedTotalLoad: 31.71,
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 15, 0.5),
+        get projectedTotalLoad() {
+          return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
+        },
+        get projectedTotalLoadWithThrottledEVs() {
+          return this.currentMaxLoad + this.projectedEvLoad / 2 + this.projectedHeatPumpLoad;
+        },
         maxRatedLoad: 25,
-        "Exceeds?": "Yes",
       },
       {
         timeChunk: "Afternoon",
         currentMaxLoad: 22.75,
         projectedEvLoad: 0,
-        projectedHeatPumpLoad: 15,
-        projectedTotalLoad: 37.75,
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 15, 0.5),
+        get projectedTotalLoad() {
+          return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
+        },
+        get projectedTotalLoadWithThrottledEVs() {
+          return this.currentMaxLoad + this.projectedEvLoad / 2 + this.projectedHeatPumpLoad;
+        },
         maxRatedLoad: 25,
-        "Exceeds?": "Yes",
       },
       {
         timeChunk: "Evening",
         currentMaxLoad: 22.52,
-        projectedEvLoad: 27.72,
-        projectedHeatPumpLoad: 0,
-        projectedTotalLoad: 50.24,
+        projectedEvLoad: calculateLoad(evLoad, 15, 0.3),
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 15, 0.5),
+        get projectedTotalLoad() {
+          return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
+        },
+        get projectedTotalLoadWithThrottledEVs() {
+          return this.currentMaxLoad + this.projectedEvLoad / 2 + this.projectedHeatPumpLoad;
+        },
         maxRatedLoad: 25,
-        "Exceeds?": "Yes",
       },
     ],
   },
@@ -120,36 +159,52 @@ export const electricityConsumptionData = {
         currentMaxLoad: 10.21,
         projectedEvLoad: 27.72,
         projectedHeatPumpLoad: 0,
-        projectedTotalLoad: 37.93,
+        get projectedTotalLoad() {
+          return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
+        },
+        get projectedTotalLoadWithThrottledEVs() {
+          return this.currentMaxLoad + this.projectedEvLoad / 2 + this.projectedHeatPumpLoad;
+        },
         maxRatedLoad: 50,
-        "Exceeds?": "No",
       },
       {
         timeChunk: "Morning",
         currentMaxLoad: 15.22,
         projectedEvLoad: 0,
-        projectedHeatPumpLoad: 15,
-        projectedTotalLoad: 30.22,
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 10, 0.5),
+        get projectedTotalLoad() {
+          return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
+        },
+        get projectedTotalLoadWithThrottledEVs() {
+          return this.currentMaxLoad + this.projectedEvLoad / 2 + this.projectedHeatPumpLoad;
+        },
         maxRatedLoad: 50,
-        "Exceeds?": "No",
       },
       {
         timeChunk: "Afternoon",
         currentMaxLoad: 18.32,
         projectedEvLoad: 0,
-        projectedHeatPumpLoad: 15,
-        projectedTotalLoad: 33.32,
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 10, 0.5),
+        get projectedTotalLoad() {
+          return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
+        },
+        get projectedTotalLoadWithThrottledEVs() {
+          return this.currentMaxLoad + this.projectedEvLoad / 2 + this.projectedHeatPumpLoad;
+        },
         maxRatedLoad: 50,
-        "Exceeds?": "No",
       },
       {
         timeChunk: "Evening",
         currentMaxLoad: 18.18,
-        projectedEvLoad: 27.72,
-        projectedHeatPumpLoad: 0,
-        projectedTotalLoad: 45.9,
+        projectedEvLoad: calculateLoad(evLoad, 10, 0.3),
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 10, 0.5),
+        get projectedTotalLoad() {
+          return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
+        },
+        get projectedTotalLoadWithThrottledEVs() {
+          return this.currentMaxLoad + this.projectedEvLoad / 2 + this.projectedHeatPumpLoad;
+        },
         maxRatedLoad: 50,
-        "Exceeds?": "No",
       },
     ],
   },

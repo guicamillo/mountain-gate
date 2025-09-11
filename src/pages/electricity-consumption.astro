@@ -29,11 +29,14 @@ const braemoor = electricityConsumptionData["26730039"];
         <div
           class="bg-indigo-100 dark:bg-indigo-800/50 rounded-3xl p-8 text-center border border-indigo-200 dark:border-indigo-700/50"
         >
-          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Why This Analysis Matters</h3>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Powering Our Future</h3>
+          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-7xl mx-auto mb-4">
+            Our community is changing. More of us are considering heat pumps for cleaner heating and cooling. Electric
+            vehicles are no longer "someday" — by 2035, every new car sold in B.C. will be electric.
+          </p>
           <p class="text-lg text-gray-700 dark:text-gray-300 max-w-7xl mx-auto">
-            Understanding current peak loads is essential for planning future electrical infrastructure. Heat pumps and
-            electric vehicles will significantly increase demand, and <strong>proper load management</strong>
-            will be critical to avoid transformer overloads and power outages.
+            These are exciting, positive changes that will make our homes more comfortable, sustainable, and valuable.
+            But they also bring new pressure to our electrical system that we need to <strong>plan for now</strong>.
           </p>
         </div>
       </div>
@@ -42,9 +45,12 @@ const braemoor = electricityConsumptionData["26730039"];
       <div class="max-w-6xl mx-auto">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl mb-8">
           <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">Current Situation</h2>
+          <p class="text-lg text-center text-gray-600 dark:text-gray-300 mb-6">
+            Right now, our transformers are handling the load — but just barely. One of them (Ridgemoor) is already
+            running at over 90% of its capacity.
+          </p>
           <p class="text-lg text-center text-gray-600 dark:text-gray-300 mb-12">
-            As of today, our strata has three transformers distributed unevenly across the complex. Each transformer
-            services a different number of units and has a different max rated capacity:
+            Each transformer services a different number of units and has a different max rated capacity:
           </p>
 
           <div class="grid md:grid-cols-3 gap-8">
@@ -173,24 +179,19 @@ const braemoor = electricityConsumptionData["26730039"];
       <div class="max-w-6xl mx-auto mb-16">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl text-center">
           <p class="text-lg text-gray-700 dark:text-gray-300 max-w-6xl mx-auto mb-6">
-            This report focuses on <strong>peak usage patterns</strong> and <strong>capacity utilization</strong> rather
-            than just averages. Peak loads determine infrastructure requirements and reveal bottlenecks that averages mask.
+            This isn't about averages — it's about the peaks. <strong
+              >Averages make things look fine, but electricity doesn't work on averages.</strong
+            > It works on demand in the moment. Peak loads determine infrastructure requirements and reveal bottlenecks that
+            averages mask.
           </p>
           <hr class="my-6" />
           <p class="text-lg text-gray-700 dark:text-gray-300 max-w-6xl mx-auto mb-6">
-            to have a better understanding of the current situation, we need to look at the peak usage patterns and
-            capacity utilization. Energy consumption is not evenly distributed throughout the day, and the peak usage
-            patterns are not always the same. To facilitate this, we have analyzed the data by time chunks, which are
-            defined as follows:
-            <span class="text-gray-700 dark:text-gray-300 mb-6 block">
+            Energy consumption is not evenly distributed throughout the day. To understand when our system is most
+            stressed, we analyze the data by time chunks:
+            <span class="text-gray-700 dark:text-gray-300 mb-6 block mt-2">
               <strong>Time Chunks:</strong>
               Night (12 AM - 6 AM), Morning (6 AM - 12 PM), Afternoon (12 PM - 6 PM), Evening (6 PM - 12 AM)
             </span>
-          </p>
-          <hr class="my-6" />
-          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-6xl mx-auto mb-6">
-            By analyzing the data by time chunks, we can get a better understanding of the peak usage patterns and
-            capacity utilization and how they vary across different transformers and time periods.
           </p>
         </div>
       </div>
@@ -329,16 +330,18 @@ const braemoor = electricityConsumptionData["26730039"];
 
             <div class="space-y-4">
               <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
-                <h4 class="font-semibold text-green-800 dark:text-green-300 mb-2">High Efficiency</h4>
+                <h4 class="font-semibold text-green-800 dark:text-green-300 mb-2">Comfort + Efficiency</h4>
                 <p class="text-gray-700 dark:text-gray-300 text-sm">
-                  Heat pumps are highly efficient for heating and cooling in townhouses (~1,800–1,900 sqft).
+                  Heat pumps are a fantastic upgrade: efficient, quiet, and better for the environment. Many owners are
+                  looking at them for both heating and summer cooling.
                 </p>
               </div>
 
               <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
-                <h4 class="font-semibold text-blue-800 dark:text-blue-300 mb-2">Load Impact</h4>
+                <h4 class="font-semibold text-blue-800 dark:text-blue-300 mb-2">The Trade-off</h4>
                 <p class="text-gray-700 dark:text-gray-300 text-sm">
-                  Assuming 50% of units adopt HPs, transformers can see an extra ~12–19.5 kW during peak hours.
+                  A typical home heat pump adds 2.5–4 kW of load. If just half of our homes switch, that's the same as
+                  adding a dozen new households' worth of daytime electricity use.
                 </p>
               </div>
 
@@ -370,32 +373,34 @@ const braemoor = electricityConsumptionData["26730039"];
 
             <div class="space-y-4">
               <div class="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
-                <h4 class="font-semibold text-purple-800 dark:text-purple-300 mb-2">BC EV Mandate</h4>
+                <h4 class="font-semibold text-purple-800 dark:text-purple-300 mb-2">The Coming Wave</h4>
                 <p class="text-gray-700 dark:text-gray-300 text-sm">
-                  26% ZEV sales by 2026, 90% by 2030, 100% by 2035. By 2035, all new light-duty vehicles sold must be
-                  zero-emission vehicles (ZEVs).
+                  By 2035, every new car will be electric. That's only 10 years away. Even today, some of us already own
+                  EVs (albeit only a few and none are using LV2 chargers) but moving forward that number will grow. And
+                  <strong>quickly</strong>.
                 </p>
               </div>
 
               <div class="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-4">
-                <h4 class="font-semibold text-indigo-800 dark:text-indigo-300 mb-2">Charging Infrastructure</h4>
+                <h4 class="font-semibold text-indigo-800 dark:text-indigo-300 mb-2">The Reality</h4>
                 <p class="text-gray-700 dark:text-gray-300 text-sm">
-                  11 homes (30% of 36 units) assumed to install Level 2 chargers (7.7 kW).
+                  A standard home charger pulls as much as 7.7 kW — nearly the same as running your oven, dryer, and
+                  dishwasher all at once.
                 </p>
               </div>
 
               <div class="bg-teal-50 dark:bg-teal-900/20 rounded-lg p-4">
-                <h4 class="font-semibold text-teal-800 dark:text-teal-300 mb-2">Simultaneity Assumption</h4>
+                <h4 class="font-semibold text-teal-800 dark:text-teal-300 mb-2">Peak Impact</h4>
                 <p class="text-gray-700 dark:text-gray-300 text-sm">
-                  30% → only some EVs charge at the same time. EV charging occurs mostly evening/night, avoiding daytime
-                  HP peaks.
+                  If even 30% of homes charge in the evening, the demand can exceed our transformer capacity. EV
+                  charging occurs mostly evening/night.
                 </p>
               </div>
 
               <div class="bg-cyan-50 dark:bg-cyan-900/20 rounded-lg p-4">
-                <h4 class="font-semibold text-cyan-800 dark:text-cyan-300 mb-2">Managed Charging</h4>
+                <h4 class="font-semibold text-cyan-800 dark:text-cyan-300 mb-2">Short-term Help</h4>
                 <p class="text-gray-700 dark:text-gray-300 text-sm">
-                  Throttling to 16 A reduces peak load from ~27.7 kW → 13.7 kW per transformer.
+                  Smart charging (throttling chargers to slower rates) can help, but it doesn't solve the problem.
                 </p>
               </div>
             </div>
@@ -409,20 +414,19 @@ const braemoor = electricityConsumptionData["26730039"];
   <section class="min-h-screen w-full flex items-center justify-center bg-blue-50 dark:bg-slate-900">
     <div class="container mx-auto px-6 py-20">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Projected Load Analysis</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          Future electrical demand with heat pumps and electric vehicle charging, unthrotled.
-        </p>
+        <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          Projected Load Breakdown by Time Chunk
+        </h2>
       </div>
 
       <div class="max-w-6xl mx-auto">
         <!-- Charts: Projected Load Breakdown per Transformer -->
         <div class="mb-12">
-          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-            Projected Load Breakdown by Time Chunk
-          </h3>
           <p class="text-center text-gray-600 dark:text-gray-400 mb-8">
-            Current usage + Electric Vehicle charging + Heat Pump load
+            This chart shows what would happen if we added the projected demand from heat pumps and electric vehicle
+            charging to our current transformer loads. It assumes all new electric heating and EV charging is added on
+            top of today's usage, without upgrades or throttling—revealing whether our existing transformers can handle
+            the future load.
           </p>
           <div
             class="grid md:grid-cols-3 gap-8"
@@ -430,20 +434,20 @@ const braemoor = electricityConsumptionData["26730039"];
           >
             <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
               <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">
-                {ridgemoor.name} (Critical)
+                {ridgemoor.name}
               </h4>
               <div class="relative h-64 md:h-80">
                 <canvas id="projectionChart26730050"></canvas>
               </div>
             </div>
             <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
-              <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">{moorside.name} (Moderate)</h4>
+              <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">{moorside.name}</h4>
               <div class="relative h-64 md:h-80">
                 <canvas id="projectionChart26730028"></canvas>
               </div>
             </div>
             <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
-              <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">{braemoor.name} (Low Risk)</h4>
+              <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">{braemoor.name}</h4>
               <div class="relative h-64 md:h-80">
                 <canvas id="projectionChart26730039"></canvas>
               </div>
@@ -480,33 +484,156 @@ const braemoor = electricityConsumptionData["26730039"];
           </div>
         </div>
 
-        <!-- Key Findings -->
-        <div
-          class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-8"
-        >
-          <div class="text-center">
-            <Icon name="bx:bxs-error" class="text-4xl text-red-600 dark:text-red-400 mx-auto mb-4" />
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Critical Infrastructure Findings</h3>
-            <div class="grid md:grid-cols-3 gap-6 text-left">
+        <!-- Charts: Projected Load Breakdown per Transformer (With Upgrades & Throttling) -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+            With Recommended Upgrades & Smart Charging
+          </h3>
+          <p class="text-center text-gray-600 dark:text-gray-400 mb-8">
+            This chart shows the same projections but with our recommended transformer upgrades (Ridgemoor 25→50 kVA,
+            Moorside 50→75 kVA) and smart EV charging that reduces peak load by 50% through throttling.
+          </p>
+          <div
+            class="grid md:grid-cols-3 gap-8"
+            style="width: 85vw; max-width: 85vw; margin-left: 50%; transform: translateX(-50%);"
+          >
+            <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+              <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">
+                {ridgemoor.name}
+              </h4>
+              <div class="relative h-64 md:h-80">
+                <canvas id="projectionChart2_26730050"></canvas>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+              <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">{moorside.name}</h4>
+              <div class="relative h-64 md:h-80">
+                <canvas id="projectionChart2_26730028"></canvas>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow">
+              <h4 class="text-center font-semibold text-gray-900 dark:text-white mb-2">{braemoor.name}</h4>
+              <div class="relative h-64 md:h-80">
+                <canvas id="projectionChart2_26730039"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart Legend -->
+          <div class="mt-8">
+            <div class="bg-white dark:bg-slate-700 rounded-xl p-4 shadow w-full">
+              <div class="flex flex-wrap items-center gap-6">
+                <span class="font-semibold text-gray-900 dark:text-white">Chart Legend:</span>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-blue-500 rounded mr-2"></div>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">Current Load</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-purple-500 rounded mr-2"></div>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">EV Charging (Throttled)</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-green-500 rounded mr-2"></div>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">Heat Pumps</span>
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-4 h-1 bg-red-500 rounded mr-2"
+                    style="border: 2px dashed rgba(239, 68, 68, 0.9); background: none;"
+                  >
+                  </div>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">Max Capacity (Upgraded)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommendations Section -->
+  <section class="bg-blue-50 dark:bg-slate-900 py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl mb-12">
+          <div class="text-center mb-8">
+            <Icon name="bx:bxs-wrench" class="text-4xl text-blue-600 dark:text-blue-400 mx-auto mb-4" />
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our Recommendations</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              Based on this analysis, here's what we need to do to secure our community's electrical future
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <!-- Immediate Actions -->
+            <div class="bg-red-50 dark:bg-red-900/20 rounded-xl p-6 border-l-4 border-red-500">
+              <h3 class="text-xl font-bold text-red-800 dark:text-red-300 mb-4">Immediate Actions</h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <Icon name="bx:bxs-circle" class="text-red-500 mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <h4 class="font-semibold text-red-800 dark:text-red-300">Upgrade Ridgemoor Transformer</h4>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm">From 25 kVA → 50 kVA (Priority 1)</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <Icon name="bx:bxs-circle" class="text-red-500 mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <h4 class="font-semibold text-red-800 dark:text-red-300">Plan Moorside Upgrade</h4>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm">From 50 kVA → 75 kVA (Priority 2)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Short-term Solutions -->
+            <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-6 border-l-4 border-yellow-500">
+              <h3 class="text-xl font-bold text-yellow-800 dark:text-yellow-300 mb-4">
+                Once transformers are upgraded
+              </h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <Icon name="bx:bxs-circle" class="text-yellow-500 mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <h4 class="font-semibold text-yellow-800 dark:text-yellow-300">Implement Load Management</h4>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm">
+                      Smart charging protocols for EVs, reducing the added load during peak hours
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <Icon name="bx:bxs-circle" class="text-yellow-500 mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <h4 class="font-semibold text-yellow-800 dark:text-yellow-300">Monitor Adoption Rates</h4>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm">Track heat pump and EV installations</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-6"
+          >
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why Act Now?</h3>
+            <div class="grid md:grid-cols-3 gap-4 text-sm">
               <div>
-                <h4 class="font-semibold text-red-800 dark:text-red-300 mb-2">{ridgemoor.name} - Immediate Risk</h4>
-                <p class="text-gray-700 dark:text-gray-300 text-sm">
-                  Exceeds capacity in <strong>ALL</strong> time periods with future loads. Requires immediate infrastructure
-                  upgrades, regardless of the adoption rate of heat pumps and electric vehicles.
+                <h4 class="font-semibold text-blue-800 dark:text-blue-300 mb-2">Proactive vs Reactive</h4>
+                <p class="text-gray-700 dark:text-gray-300">
+                  Planning upgrades now costs less than emergency repairs after impending failures happen
                 </p>
               </div>
               <div>
-                <h4 class="font-semibold text-orange-800 dark:text-orange-300 mb-2">
-                  {moorside.name} - at Risk
-                </h4>
-                <p class="text-gray-700 dark:text-gray-300 text-sm">
-                  Exceeds capacity during evening peak when EVs charge. Load management strategies needed.
+                <h4 class="font-semibold text-blue-800 dark:text-blue-300 mb-2">Property Values</h4>
+                <p class="text-gray-700 dark:text-gray-300">
+                  Modern electrical infrastructure makes homes more attractive to buyers
                 </p>
               </div>
               <div>
-                <h4 class="font-semibold text-green-800 dark:text-green-300 mb-2">{braemoor.name} - Manageable</h4>
-                <p class="text-gray-700 dark:text-gray-300 text-sm">
-                  Stays within capacity limits across all time periods. Well-positioned for future growth.
+                <h4 class="font-semibold text-blue-800 dark:text-blue-300 mb-2">Future-Ready</h4>
+                <p class="text-gray-700 dark:text-gray-300">
+                  Support residents' transition to clean energy without system stress
                 </p>
               </div>
             </div>
@@ -543,6 +670,13 @@ const braemoor = electricityConsumptionData["26730039"];
 </Layout>
 
 <script>
+  const chartColors = {
+    ticks: {
+      lightmode: "#6b7280",
+      darkmode: "#f1f5f9",
+    },
+  } as const;
+
   import Chart from "chart.js/auto";
   import { electricityConsumptionData } from "./electricity-consumption-data.ts";
 
@@ -707,7 +841,7 @@ const braemoor = electricityConsumptionData["26730039"];
             scales: {
               x: {
                 ticks: {
-                  color: isDarkMode ? "#e5e7eb" : "#374151",
+                  color: isDarkMode ? chartColors.ticks.darkmode : chartColors.ticks.lightmode,
                   maxRotation: 45,
                 },
                 grid: {
@@ -715,9 +849,9 @@ const braemoor = electricityConsumptionData["26730039"];
                 },
               },
               y: {
-                max: maxCapacityForTransformer + 10, // Add headroom above max capacity
+                max: 90, // Add headroom above max capacity
                 ticks: {
-                  color: isDarkMode ? "#e5e7eb" : "#374151",
+                  color: isDarkMode ? chartColors.ticks.darkmode : chartColors.ticks.lightmode,
                 },
                 grid: {
                   color: isDarkMode ? "#374151" : "#e5e7eb",
@@ -801,7 +935,7 @@ const braemoor = electricityConsumptionData["26730039"];
               x: {
                 stacked: true,
                 ticks: {
-                  color: isDarkMode ? "#e5e7eb" : "#374151",
+                  color: isDarkMode ? chartColors.ticks.darkmode : chartColors.ticks.lightmode,
                   maxRotation: 45,
                 },
                 grid: {
@@ -810,12 +944,120 @@ const braemoor = electricityConsumptionData["26730039"];
               },
               y: {
                 stacked: true,
-                max: maxCapacity + 10, // Add some headroom above max capacity
+                max: 90, // Add some headroom above max capacity
                 ticks: {
-                  color: isDarkMode ? "#e5e7eb" : "#374151",
+                  color: isDarkMode ? chartColors.ticks.darkmode : chartColors.ticks.lightmode,
                 },
                 grid: {
                   color: isDarkMode ? "#374151" : "#e5e7eb",
+                },
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      }
+
+      // Initialize second set of projection charts (with upgrades and throttling)
+      const projectionCtx2 = document.getElementById(`projectionChart2_${id}`) as HTMLCanvasElement;
+      if (projectionCtx2) {
+        const data = projectionData[id];
+
+        // Apply upgrades to transformer capacity
+        let upgradedCapacity = data[0].maxRated;
+        if (id === "26730050") {
+          // Ridgemoor: 25→50 kVA
+          upgradedCapacity = 50;
+        } else if (id === "26730028") {
+          // Moorside: 50→75 kVA
+          upgradedCapacity = 75;
+        }
+        // Braemoor (26730039) stays at 50 kVA
+
+        // Get the throttled data from electricityConsumptionData
+        const throttledEvLoads = electricityConsumptionData[id].projections.map((proj) => proj.projectedEvLoad / 2);
+
+        projectionCharts[`${id}_2`] = new Chart(projectionCtx2, {
+          type: "bar",
+          data: {
+            labels: data.map((d) => d.timeChunk),
+            datasets: [
+              {
+                label: "Current Load",
+                data: data.map((d) => d.current),
+                backgroundColor: "rgba(59, 130, 246, 0.8)",
+                borderColor: "rgb(59, 130, 246)",
+                borderWidth: 1,
+              },
+              {
+                label: "EV Charging (Throttled)",
+                data: throttledEvLoads, // Use projectedEvLoad/2
+                backgroundColor: "rgba(168, 85, 247, 0.8)",
+                borderColor: "rgb(168, 85, 247)",
+                borderWidth: 1,
+              },
+              {
+                label: "Heat Pumps",
+                data: data.map((d) => d.heatPump),
+                backgroundColor: "rgba(34, 197, 94, 0.8)",
+                borderColor: "rgb(34, 197, 94)",
+                borderWidth: 1,
+              },
+            ],
+          },
+          plugins: [
+            {
+              id: "maxCapacityLine",
+              afterDraw: function (chart) {
+                const ctx = chart.ctx;
+                const yAxis = chart.scales.y;
+                const yPosition = yAxis.getPixelForValue(upgradedCapacity);
+
+                ctx.save();
+                ctx.strokeStyle = "rgba(34, 197, 94, 0.9)"; // Green line for upgraded capacity
+                ctx.lineWidth = 3;
+                ctx.setLineDash([10, 5]);
+                ctx.beginPath();
+                ctx.moveTo(chart.chartArea.left, yPosition);
+                ctx.lineTo(chart.chartArea.right, yPosition);
+                ctx.stroke();
+
+                // Add label
+                ctx.fillStyle = "rgba(34, 197, 94, 0.9)";
+                ctx.font = "12px Arial";
+                ctx.fillText(`${upgradedCapacity} kVA (Upgraded)`, chart.chartArea.left + 10, yPosition - 5);
+
+                ctx.restore();
+              },
+            },
+          ],
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false,
+              },
+            },
+            scales: {
+              x: {
+                stacked: true,
+                ticks: {
+                  color: isDarkMode ? chartColors.ticks.darkmode : chartColors.ticks.lightmode,
+                  maxRotation: 45,
+                },
+                grid: {
+                  color: isDarkMode ? "oklch(86.9% 0.022 252.894)1" : "#e5e7eb",
+                },
+              },
+              y: {
+                stacked: true,
+                max: 90, // Add some headroom above upgraded capacity
+                ticks: {
+                  color: isDarkMode ? chartColors.ticks.darkmode : chartColors.ticks.lightmode,
+                },
+                grid: {
+                  color: isDarkMode ? "oklch(86.9% 0.022 252.894)" : "#e5e7eb",
                 },
                 beginAtZero: true,
               },
