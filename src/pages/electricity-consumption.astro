@@ -177,14 +177,7 @@ const braemoor = electricityConsumptionData["26730039"];
 
       <!-- Our Analysis Method -->
       <div class="max-w-6xl mx-auto mb-16">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl text-center">
-          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-6xl mx-auto mb-6">
-            This isn't about averages — it's about the peaks. <strong
-              >Averages make things look fine, but electricity doesn't work on averages.</strong
-            > It works on demand in the moment. Peak loads determine infrastructure requirements and reveal bottlenecks that
-            averages mask.
-          </p>
-          <hr class="my-6" />
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl">
           <p class="text-lg text-gray-700 dark:text-gray-300 max-w-6xl mx-auto mb-6">
             Energy consumption is not evenly distributed throughout the day. To understand when our system is most
             stressed, we analyze the data by time chunks:
@@ -192,6 +185,13 @@ const braemoor = electricityConsumptionData["26730039"];
               <strong>Time Chunks:</strong>
               Night (12 AM - 6 AM), Morning (6 AM - 12 PM), Afternoon (12 PM - 6 PM), Evening (6 PM - 12 AM)
             </span>
+          </p>
+          <hr class="my-6" />
+          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-6xl mx-auto mb-6">
+            This isn't about averages — it's about the peaks. <strong
+              >Averages make things look fine, but electricity doesn't work on averages.</strong
+            >Transformers works based on the requested demand at the moment. Peak loads determine infrastructure
+            requirements and reveal bottlenecks that averages mask.
           </p>
         </div>
       </div>
@@ -337,23 +337,23 @@ const braemoor = electricityConsumptionData["26730039"];
                 </p>
               </div>
 
-              <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
-                <h4 class="font-semibold text-blue-800 dark:text-blue-300 mb-2">The Trade-off</h4>
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-green-800 dark:text-green-300 mb-2">The Trade-off</h4>
                 <p class="text-gray-700 dark:text-gray-300 text-sm">
                   A typical home heat pump adds 2.5–4 kW of load. If just half of our homes switch, that's the same as
                   adding a dozen new households' worth of daytime electricity use.
                 </p>
               </div>
 
-              <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4">
-                <h4 class="font-semibold text-yellow-800 dark:text-yellow-300 mb-2">Peak Timing</h4>
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-green-800 dark:text-green-300 mb-2">Peak Timing</h4>
                 <p class="text-gray-700 dark:text-gray-300 text-sm">
                   HP load is mostly during Morning & Afternoon, which helps avoid stacking with EV peaks.
                 </p>
               </div>
 
-              <div class="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-4">
-                <h4 class="font-semibold text-orange-800 dark:text-orange-300 mb-2">Planning Requirement</h4>
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-green-800 dark:text-green-300 mb-2">Planning Requirement</h4>
                 <p class="text-gray-700 dark:text-gray-300 text-sm">
                   Even partial adoption significantly increases peak demand — careful planning is needed.
                 </p>
@@ -364,7 +364,7 @@ const braemoor = electricityConsumptionData["26730039"];
           <!-- Electric Vehicles Section -->
           <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl">
             <div class="text-center mb-6">
-              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Icon name="bx:bxs-car" class="text-2xl text-white" />
               </div>
               <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Electric Vehicles</h3>
@@ -381,24 +381,24 @@ const braemoor = electricityConsumptionData["26730039"];
                 </p>
               </div>
 
-              <div class="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-4">
-                <h4 class="font-semibold text-indigo-800 dark:text-indigo-300 mb-2">The Reality</h4>
+              <div class="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-purple-800 dark:text-purple-300 mb-2">The Reality</h4>
                 <p class="text-gray-700 dark:text-gray-300 text-sm">
                   A standard home charger pulls as much as 7.7 kW — nearly the same as running your oven, dryer, and
                   dishwasher all at once.
                 </p>
               </div>
 
-              <div class="bg-teal-50 dark:bg-teal-900/20 rounded-lg p-4">
-                <h4 class="font-semibold text-teal-800 dark:text-teal-300 mb-2">Peak Impact</h4>
+              <div class="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-purple-800 dark:text-purple-300 mb-2">Peak Impact</h4>
                 <p class="text-gray-700 dark:text-gray-300 text-sm">
                   If even 30% of homes charge in the evening, the demand can exceed our transformer capacity. EV
                   charging occurs mostly evening/night.
                 </p>
               </div>
 
-              <div class="bg-cyan-50 dark:bg-cyan-900/20 rounded-lg p-4">
-                <h4 class="font-semibold text-cyan-800 dark:text-cyan-300 mb-2">Short-term Help</h4>
+              <div class="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
+                <h4 class="font-semibold text-purple-800 dark:text-purple-300 mb-2">Short-term Help</h4>
                 <p class="text-gray-700 dark:text-gray-300 text-sm">
                   Smart charging (throttling chargers to slower rates) can help, but it doesn't solve the problem.
                 </p>
@@ -486,7 +486,7 @@ const braemoor = electricityConsumptionData["26730039"];
 
         <!-- Charts: Projected Load Breakdown per Transformer (With Upgrades & Throttling) -->
         <div class="mb-12">
-          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6 text-center">
             With Recommended Upgrades & Smart Charging
           </h3>
           <p class="text-center text-gray-600 dark:text-gray-400 mb-8">
@@ -538,8 +538,8 @@ const braemoor = electricityConsumptionData["26730039"];
                 </div>
                 <div class="flex items-center">
                   <div
-                    class="w-4 h-1 bg-red-500 rounded mr-2"
-                    style="border: 2px dashed rgba(239, 68, 68, 0.9); background: none;"
+                    class="w-4 h-1 bg-green-500 rounded mr-2"
+                    style="border: 2px dashed rgba(34, 197, 94, 0.9); background: none;"
                   >
                   </div>
                   <span class="text-sm text-gray-700 dark:text-gray-300">Max Capacity (Upgraded)</span>
@@ -574,14 +574,14 @@ const braemoor = electricityConsumptionData["26730039"];
                   <Icon name="bx:bxs-circle" class="text-red-500 mt-1 mr-3 flex-shrink-0" />
                   <div>
                     <h4 class="font-semibold text-red-800 dark:text-red-300">Upgrade Ridgemoor Transformer</h4>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm">From 25 kVA → 50 kVA (Priority 1)</p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm">From 25 kVA → 50 kVA</p>
                   </div>
                 </div>
                 <div class="flex items-start">
                   <Icon name="bx:bxs-circle" class="text-red-500 mt-1 mr-3 flex-shrink-0" />
                   <div>
                     <h4 class="font-semibold text-red-800 dark:text-red-300">Plan Moorside Upgrade</h4>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm">From 50 kVA → 75 kVA (Priority 2)</p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm">From 50 kVA → 75 kVA</p>
                   </div>
                 </div>
               </div>
