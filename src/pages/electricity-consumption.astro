@@ -845,16 +845,18 @@ const braemoor = electricityConsumptionData["26730039"];
                   maxRotation: 45,
                 },
                 grid: {
-                  color: isDarkMode ? "#374151" : "#e5e7eb",
+                  display: isDarkMode ? false : true,
+                  color: isDarkMode ? "transparent" : "#e5e7eb",
                 },
               },
               y: {
-                max: 90, // Add headroom above max capacity
+                max: 60, // Add headroom above max capacity
                 ticks: {
                   color: isDarkMode ? chartColors.ticks.darkmode : chartColors.ticks.lightmode,
                 },
                 grid: {
-                  color: isDarkMode ? "#374151" : "#e5e7eb",
+                  display: isDarkMode ? false : true,
+                  color: isDarkMode ? "transparent" : "#e5e7eb",
                 },
                 beginAtZero: true,
               },
@@ -939,7 +941,8 @@ const braemoor = electricityConsumptionData["26730039"];
                   maxRotation: 45,
                 },
                 grid: {
-                  color: isDarkMode ? "#374151" : "#e5e7eb",
+                  display: isDarkMode ? false : true,
+                  color: isDarkMode ? "transparent" : "#e5e7eb",
                 },
               },
               y: {
@@ -949,7 +952,8 @@ const braemoor = electricityConsumptionData["26730039"];
                   color: isDarkMode ? chartColors.ticks.darkmode : chartColors.ticks.lightmode,
                 },
                 grid: {
-                  color: isDarkMode ? "#374151" : "#e5e7eb",
+                  display: isDarkMode ? false : true,
+                  color: isDarkMode ? "transparent" : "#e5e7eb",
                 },
                 beginAtZero: true,
               },
@@ -1025,7 +1029,12 @@ const braemoor = electricityConsumptionData["26730039"];
                 // Add label
                 ctx.fillStyle = "rgba(239, 68, 68, 0.9)";
                 ctx.font = "12px Arial";
-                ctx.fillText(`${upgradedCapacity} kVA (Upgraded)`, chart.chartArea.left + 10, yPosition - 5);
+                // Only show "(Upgraded)" for Ridgemoor and Moorside, not Braemoor
+                let label = `${upgradedCapacity} kVA`;
+                if (id === "26730050" || id === "26730028") {
+                  label += " (Upgraded)";
+                }
+                ctx.fillText(label, chart.chartArea.left + 10, yPosition - 5);
 
                 ctx.restore();
               },
@@ -1047,7 +1056,8 @@ const braemoor = electricityConsumptionData["26730039"];
                   maxRotation: 45,
                 },
                 grid: {
-                  color: isDarkMode ? "oklch(86.9% 0.022 252.894)1" : "#e5e7eb",
+                  display: isDarkMode ? false : true,
+                  color: isDarkMode ? "transparent" : "#e5e7eb",
                 },
               },
               y: {
@@ -1057,7 +1067,8 @@ const braemoor = electricityConsumptionData["26730039"];
                   color: isDarkMode ? chartColors.ticks.darkmode : chartColors.ticks.lightmode,
                 },
                 grid: {
-                  color: isDarkMode ? "oklch(86.9% 0.022 252.894)" : "#e5e7eb",
+                  display: isDarkMode ? false : true,
+                  color: isDarkMode ? "transparent" : "#e5e7eb",
                 },
                 beginAtZero: true,
               },
