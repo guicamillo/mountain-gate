@@ -538,8 +538,8 @@ const braemoor = electricityConsumptionData["26730039"];
                 </div>
                 <div class="flex items-center">
                   <div
-                    class="w-4 h-1 bg-green-500 rounded mr-2"
-                    style="border: 2px dashed rgba(34, 197, 94, 0.9); background: none;"
+                    class="w-4 h-1 bg-red-500 rounded mr-2"
+                    style="border: 2px dashed rgba(239, 68, 68, 0.9); background: none;"
                   >
                   </div>
                   <span class="text-sm text-gray-700 dark:text-gray-300">Max Capacity (Upgraded)</span>
@@ -1014,7 +1014,7 @@ const braemoor = electricityConsumptionData["26730039"];
                 const yPosition = yAxis.getPixelForValue(upgradedCapacity);
 
                 ctx.save();
-                ctx.strokeStyle = "rgba(34, 197, 94, 0.9)"; // Green line for upgraded capacity
+                ctx.strokeStyle = "rgba(239, 68, 68, 0.9)"; // Same red as regular max capacity lines
                 ctx.lineWidth = 3;
                 ctx.setLineDash([10, 5]);
                 ctx.beginPath();
@@ -1023,7 +1023,7 @@ const braemoor = electricityConsumptionData["26730039"];
                 ctx.stroke();
 
                 // Add label
-                ctx.fillStyle = "rgba(34, 197, 94, 0.9)";
+                ctx.fillStyle = "rgba(239, 68, 68, 0.9)";
                 ctx.font = "12px Arial";
                 ctx.fillText(`${upgradedCapacity} kVA (Upgraded)`, chart.chartArea.left + 10, yPosition - 5);
 

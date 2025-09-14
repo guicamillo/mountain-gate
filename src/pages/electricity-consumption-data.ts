@@ -23,7 +23,7 @@ export const electricityConsumptionData = {
       {
         timeChunk: "Night",
         currentMaxLoad: 17.5,
-        projectedEvLoad: calculateLoad(evLoad, 20, 0.3),
+        projectedEvLoad: calculateLoad(evLoad, 17, 0.3),
         projectedHeatPumpLoad: 0,
         get projectedTotalLoad() {
           return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
@@ -37,7 +37,7 @@ export const electricityConsumptionData = {
         timeChunk: "Morning",
         currentMaxLoad: 18.87,
         projectedEvLoad: 0,
-        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 20, 0.5),
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 17, 0.5),
         get projectedTotalLoad() {
           return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
         },
@@ -50,7 +50,7 @@ export const electricityConsumptionData = {
         timeChunk: "Afternoon",
         currentMaxLoad: 28.51,
         projectedEvLoad: 0,
-        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 20, 0.5),
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 17, 0.5),
         get projectedTotalLoad() {
           return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
         },
@@ -62,8 +62,8 @@ export const electricityConsumptionData = {
       {
         timeChunk: "Evening",
         currentMaxLoad: 31,
-        projectedEvLoad: calculateLoad(evLoad, 20, 0.3),
-        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 20, 0.5),
+        projectedEvLoad: calculateLoad(evLoad, 17, 0.3),
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 17, 0.5),
         get projectedTotalLoad() {
           return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
         },
@@ -92,7 +92,7 @@ export const electricityConsumptionData = {
       {
         timeChunk: "Night",
         currentMaxLoad: 12.84,
-        projectedEvLoad: calculateLoad(evLoad, 15, 0.3),
+        projectedEvLoad: calculateLoad(evLoad, 12, 0.3),
         projectedHeatPumpLoad: 0,
         get projectedTotalLoad() {
           return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
@@ -106,7 +106,7 @@ export const electricityConsumptionData = {
         timeChunk: "Morning",
         currentMaxLoad: 16.71,
         projectedEvLoad: 0,
-        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 15, 0.5),
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 12, 0.5),
         get projectedTotalLoad() {
           return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
         },
@@ -119,7 +119,7 @@ export const electricityConsumptionData = {
         timeChunk: "Afternoon",
         currentMaxLoad: 22.75,
         projectedEvLoad: 0,
-        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 15, 0.5),
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 12, 0.5),
         get projectedTotalLoad() {
           return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
         },
@@ -131,8 +131,8 @@ export const electricityConsumptionData = {
       {
         timeChunk: "Evening",
         currentMaxLoad: 22.52,
-        projectedEvLoad: calculateLoad(evLoad, 15, 0.3),
-        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 15, 0.5),
+        projectedEvLoad: calculateLoad(evLoad, 12, 0.3),
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 12, 0.5),
         get projectedTotalLoad() {
           return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
         },
@@ -160,7 +160,7 @@ export const electricityConsumptionData = {
       {
         timeChunk: "Night",
         currentMaxLoad: 10.21,
-        projectedEvLoad: 27.72,
+        projectedEvLoad: calculateLoad(evLoad, 8, 0.3),
         projectedHeatPumpLoad: 0,
         get projectedTotalLoad() {
           return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
@@ -174,7 +174,7 @@ export const electricityConsumptionData = {
         timeChunk: "Morning",
         currentMaxLoad: 15.22,
         projectedEvLoad: 0,
-        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 10, 0.5),
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 8, 0.5),
         get projectedTotalLoad() {
           return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
         },
@@ -187,7 +187,7 @@ export const electricityConsumptionData = {
         timeChunk: "Afternoon",
         currentMaxLoad: 18.32,
         projectedEvLoad: 0,
-        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 10, 0.5),
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 8, 0.5),
         get projectedTotalLoad() {
           return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
         },
@@ -199,8 +199,8 @@ export const electricityConsumptionData = {
       {
         timeChunk: "Evening",
         currentMaxLoad: 18.18,
-        projectedEvLoad: calculateLoad(evLoad, 10, 0.3),
-        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 10, 0.5),
+        projectedEvLoad: calculateLoad(evLoad, 8, 0.3),
+        projectedHeatPumpLoad: calculateLoad(heatPumpLoad, 8, 0.5),
         get projectedTotalLoad() {
           return this.currentMaxLoad + this.projectedEvLoad + this.projectedHeatPumpLoad;
         },
