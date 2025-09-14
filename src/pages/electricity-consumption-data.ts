@@ -10,6 +10,7 @@ export const electricityConsumptionData = {
     name: "Moorside",
     maxRating: "50kva",
     totalNumberOfServicedUnits: 20,
+    totalNumberOfActualUnits: 17,
     currentUsage: {
       max: {
         Night: 17.5,
@@ -77,6 +78,7 @@ export const electricityConsumptionData = {
     name: "Ridgemoor",
     maxRating: "25kva",
     totalNumberOfServicedUnits: 15,
+    totalNumberOfActualUnits: 12,
     currentUsage: {
       averages: {},
       max: {
@@ -145,6 +147,7 @@ export const electricityConsumptionData = {
     name: "Braemoor",
     maxRating: "50kva",
     totalNumberOfServicedUnits: 10,
+    totalNumberOfActualUnits: 8,
     currentUsage: {
       max: {
         Night: 10.21,
