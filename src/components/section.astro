@@ -10,6 +10,6 @@ const { name, blurb, as: Tag = "h3" } = Astro.props;
 
 <div>
   <Tag class="font-semibold text-lg text-gray-900 dark:text-gray-100">{name}</Tag>
-  {blurb && <p class="text-sm font-medium text-gray-600 dark:text-gray-300">{blurb}</p>}
+  {blurb && <p class="text-sm font-medium text-gray-600 dark:text-gray-300" set:html={blurb} />}
   <slot />
 </div>
